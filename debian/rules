@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	rm -rf $(CURDIR)/build
+
+override_dh_auto_build:
+	make html
+
+override_dh_auto_test:
+
+override_dh_auto_install:
+	cp -rf $(CURDIR)/build/html/* $(CURDIR)/debian/exegol-docs/usr/share/doc/exegol/
