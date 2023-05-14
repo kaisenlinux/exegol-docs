@@ -5,19 +5,20 @@ Users
 Roadmap
 =======
 
-The roadmap is available on the discord server, feel free to visit it and upvote your favorite features
+The roadmap is available on GitHub: https://github.com/orgs/ThePorgs/projects/1/views/1
+
+.. image:: /assets/gh_roadmap.png
+    :align: center
+    :alt: Roadmap (GitHub)
+
+.. raw:: html
+
+    <br>
 
 Discord
 =======
 
 An Exegol discord has been created to facilitate exchanges between the community, open tickets, share ideas, vote on future features to prioritize etc..
-
-
-
-.. image:: /assets/sponsors/capgemini.png
-   :align: center
-   :width: 300px
-   :alt: Capgemini logo
 
 .. raw:: html
 
@@ -29,4 +30,4 @@ An Exegol discord has been created to facilitate exchanges between the community
 Changelogs
 ==========
 
-WIP
+*Work in Progress*

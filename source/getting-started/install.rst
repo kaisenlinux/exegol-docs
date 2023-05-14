@@ -1,6 +1,6 @@
-=======
-Install
-=======
+==============
+Install Exegol
+==============
 
 Installing Exegol starts with installing the entrypoint to the whole project: the Python wrapper. Once the wrapper is installed, everything else can be managed from it.
 
@@ -41,15 +41,19 @@ Additional dependencies may be required depending on the host OS.
            .. code-block:: bash
 
               curl -fsSL "https://get.docker.com/" -o get-docker.sh
+              sh get-docker.sh
 
         .. warning::
 
-           To run exegol from the user environment without `sudo`, the user must have privileged rights equivalent to root.
-           To grant yourself these rights, you can use the following command
+           By default, ``sudo`` will be required when running docker, hence needed as well for Exegol. For security reasons, it should stay that way, but it's possible to change that. In order to run exegol from the user environment without ``sudo``, the user must have the appropriate rights. You can use the following command to grant them to the current user:
 
            .. code-block:: bash
 
+              # add the sudo group to the user
               sudo usermod -aG docker $(id -u -n)
+
+              # "reload" the user groups with the newly added docker group
+              newgrp docker
 
            For more information, official Docker documentation shows `how to manage docker as a non root user <https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-userm>`_.
 
@@ -72,6 +76,12 @@ Additional dependencies may be required depending on the host OS.
             :alt: macOS Docker Desktop resources requirement
 
             macOS Docker Desktop resources requirement
+
+        .. tip::
+
+            `OrbStack <https://orbstack.dev/>`__ for **Mac** is supported by Exegol wrapper from ``v4.2.0``.
+
+            This support is still in beta, feel free to open issues on `GitHub <https://github.com/ThePorgs/Exegol/issues/new/choose>`__ if you encounter any bugs.
 
     ..  group-tab:: Windows
 
@@ -112,7 +122,26 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
         .. code-block:: bash
 
            git clone "https://github.com/ThePorgs/Exegol"
-           python3 -m pip install --user --requirement "Exegol/requirements.txt"
+
+        If you have access to docker directly as a user, you can install the requirements only for your current user
+        otherwise the requirements must be installed as root to run Exegol with sudo.
+
+        .. tabs::
+
+            .. tab:: With sudo
+
+                .. code-block:: bash
+
+                   sudo python3 -m pip install --requirement "Exegol/requirements.txt"
+
+            .. tab:: Directly as user
+
+                .. code-block:: bash
+
+                   python3 -m pip install --user --requirement "Exegol/requirements.txt"
+
+
+
 
 
 2. Adding Exegol to the ``PATH``
@@ -169,7 +198,89 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
                     It is possible to disable this behavior in the Windows settings: ``Apps > Apps & features > App execution aliases`` and disable aliases for ``python.exe`` and ``python3.exe``.
 
-3. Installation of the first Exegol image
+3. (Optional) Using Exegol auto-completion
+------------------------------------------
+
+Exegol supports auto-completion in many shell environments but there is a configuration to add for this feature to work.
+
+.. tip::
+
+    If you have a source installation, make sure you have installed (or updated) the ``requirements.txt`` packages before using the completer.
+
+..  tabs::
+    ..  tabs::
+        .. tab:: Bash
+
+            You can enable Exegol auto-completion for your **current user** with your ``.bashrc`` or you can enable the auto-completion **system-wide** with ``bash-completion``.
+
+            ..  tabs::
+
+                .. tab:: Via bash-completion
+
+                    To setup the auto-completion system-wide you first need to install ``bash-completion`` on your system (if not already installed).
+
+                    .. code-block:: bash
+
+                        sudo apt update && sudo apt install bash-completion
+
+                    At this point you should have a ``/etc/bash_completion.d/`` folder. It's in there that you can add any auto-completion module that you want.
+
+                    To generate and install the exegol completion configuration you can execute the following command with ``register-python-argcomplete``:
+
+                    .. code-block:: bash
+
+                        register-python-argcomplete --no-defaults exegol | sudo tee /etc/bash_completion.d/exegol > /dev/null
+
+                .. tab:: Via .bashrc
+
+                    Add the following command in your ``~/.bashrc`` config:
+
+                    .. code-block:: bash
+
+                        eval "$(register-python-argcomplete --no-defaults exegol)"
+
+
+            .. tip::
+                If you have multiple tools using ``argcomplete`` you can also use the `global completion <https://kislyuk.github.io/argcomplete/#global-completion>`__ method (need bash >= 4.2).
+
+        .. tab:: Zsh
+
+            To activate completions for zsh you need to have ``bashcompinit`` enabled in zsh:
+
+            .. code-block:: bash
+
+                autoload -U bashcompinit
+                bashcompinit
+
+            Afterwards you can enable completion by adding the following command in your ``~/.zshrc`` config:
+
+            .. code-block:: bash
+
+                eval "$(register-python-argcomplete --no-defaults exegol)"
+
+        .. tab:: Fish
+
+            To activate completions for fish use:
+
+            .. code-block:: bash
+
+                register-python-argcomplete --no-defaults --shell fish exegol | source
+
+            or create new completion file, e.g:
+
+            .. code-block:: bash
+
+                register-python-argcomplete --no-defaults --shell fish exegol > ~/.config/fish/completions/exegol.fish
+
+        .. tab:: Tcsh
+
+            To activate completions for tcsh use:
+
+            .. code-block:: bash
+
+                eval `register-python-argcomplete --no-defaults --shell tcsh exegol`
+
+4. Installation of the first Exegol image
 -----------------------------------------
 
 Once the exegol wrapper is installed, you can download your first docker image with the following command:

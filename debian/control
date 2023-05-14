@@ -11,7 +11,7 @@ Build-Depends:
  python3-sphinx-rtd-theme,
  python3-sphinx-tabs, 
  python3-sphinx-copybutton,
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Homepage: https://exegol.readthedocs.io/
 Vcs-Browser: https://gitlab.com/kaisenlinux/packages/exegol-docs
 Vcs-Git: https://gitlab.com/kaisenlinux/packages/exegol-docs.git
