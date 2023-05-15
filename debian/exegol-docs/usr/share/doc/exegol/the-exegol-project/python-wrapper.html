@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Wrapper &mdash; Exegol 4.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/logo_round.ico"/>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Docker images" href="docker-images.html" />
+    <link rel="prev" title="Updates" href="../getting-started/updates.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Exegol
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/install.html">Install Exegol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/updates.html">Updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Exegol Project</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Wrapper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#display-sharing">Display sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workspace">Workspace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update-fs">Update-fs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#openvpn-connection">OpenVPN connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shell-logging">Shell logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-network">Shared network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-timezones">Shared timezones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exegol-resources">Exegol-resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#my-resources">My-resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volume-sharing">Volume sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#port-sharing">Port sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#env-variables">Env. variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-sharing">Device sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-hostname">Custom hostname</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capabilities">Capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#privileged">Privileged</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-architecture">Multi-architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-image-building">Local image building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remote-image-pulling">Remote image pulling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execution">Command execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#daemon-execution">Daemon execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#temporary-containers">Temporary containers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker-images.html">Docker images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="offline-resources.html">Offline resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Exegol wrapper</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/install.html"><code class="code docutils literal notranslate"><span class="pre">install</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/start.html"><code class="code docutils literal notranslate"><span class="pre">start</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/info.html"><code class="code docutils literal notranslate"><span class="pre">info</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/exec.html"><code class="code docutils literal notranslate"><span class="pre">exec</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/update.html"><code class="code docutils literal notranslate"><span class="pre">update</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/stop.html"><code class="code docutils literal notranslate"><span class="pre">stop</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/restart.html"><code class="code docutils literal notranslate"><span class="pre">restart</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/remove.html"><code class="code docutils literal notranslate"><span class="pre">remove</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/uninstall.html"><code class="code docutils literal notranslate"><span class="pre">uninstall</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/version.html"><code class="code docutils literal notranslate"><span class="pre">version</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/advanced-uses.html">Advanced uses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Exegol image</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-image/credentials.html">Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-image/my-resources.html">My resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Exegol resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-resources/intro.html">Intro</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/maintainers.html">Maintainers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/sponsors.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/credits.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Exegol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Python Wrapper</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/the-exegol-project/python-wrapper.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-wrapper">
+<h1>Python Wrapper<a class="headerlink" href="#python-wrapper" title="Permalink to this heading"></a></h1>
+<p>The Exegol project regroups many things (docker images, offline resources, custom configurations, aliases, history commands, multi-architecture support and many others). In order to make all the tech involved easy to use, and provide some unique entrypoint to the whole setup, a Python wrapper was created.</p>
+<p>The Python wrapper handles all Docker and Git operations, can manage multiple images and containers at once and give the user the best experience possible, suited for beginners as well as advanced people.</p>
+<p>The wrapper knows multiple actions.</p>
+<ul class="simple">
+<li><p>Install an image : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">install</span></code></p></li>
+<li><p>Create/start/enter a container : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">start</span></code></p></li>
+<li><p>Show info on containers and images : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">info</span></code></p></li>
+<li><p>Stop a container : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">stop</span></code></p></li>
+<li><p>Remove a container : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">remove</span></code></p></li>
+<li><p>Uninstall an image : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">uninstall</span></code></p></li>
+<li><p>Get help and advanced usage : <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">--help</span></code></p></li>
+<li><p>Help and examples can be obtained for each action directly from the wrapper with the following command: <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">&lt;action&gt;</span> <span class="pre">-h</span></code> (action: <code class="docutils literal notranslate"><span class="pre">install</span></code>/<code class="docutils literal notranslate"><span class="pre">start</span></code>/<code class="docutils literal notranslate"><span class="pre">stop</span></code>/etc.).</p></li>
+</ul>
+<p>All actions are documented in the <strong>exegol-wrapper</strong> part of this doc (e.g. <a class="reference internal" href="../exegol-wrapper/info.html"><span class="doc">info</span></a>, <a class="reference internal" href="../exegol-wrapper/start.html"><span class="doc">start</span></a>, <a class="reference internal" href="../exegol-wrapper/version.html"><span class="doc">version</span></a>, …)</p>
+<p>Below is a, non-exhaustive, list of what the wrapper supports:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Exegol uses Docker images and containers. Understanding the difference is essential to understand Exegol.</p>
+<ul class="simple">
+<li><p><strong>image</strong>: think of it as an immutable template. They cannot be executed as-is and serve as input for containers. It’s not possible to open a shell in an image.</p></li>
+<li><p><strong>container</strong>: a container rests upon an image. A container is created for a certain image at a certain time. It’s possible to open a shell in a container. Careful though, once a container is created, updating the image it was created upon won’t have any impact on the container. In order to enjoy the new things, a new container must be created upon that updated image.</p></li>
+</ul>
+</div>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<p>The Exegol wrapper has many features to automatically and transparently manage different configurations to facilitate the use and creation of docker containers.</p>
+<section id="display-sharing">
+<span id="feature-display-sharing"></span><h3>Display sharing<a class="headerlink" href="#display-sharing" title="Permalink to this heading"></a></h3>
+<p>By default exegol configures the new container and host to allow the execution to the display of graphical window launched from an exegol container.</p>
+<p>For example, if bloodhound is launched in an exegol container, the graphical window (GUI) will be displayed in the user’s graphic environment.</p>
+<p>This feature can be disabled manually with the option <code class="docutils literal notranslate"><span class="pre">--disable-X11</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a>.</p>
+</section>
+<section id="workspace">
+<span id="feature-workspace"></span><h3>Workspace<a class="headerlink" href="#workspace" title="Permalink to this heading"></a></h3>
+<p>Exegol always creates within a container a <strong>persistent</strong> workspace (even after deleting the container) and <strong>shared</strong> with the host.</p>
+<p>By default a folder will be created on the host and shared with the container. This folder will be created in <code class="docutils literal notranslate"><span class="pre">~/.exegol/workspaces/</span></code> with the name of the exegol container.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The default location of workspace volumes can be changed in the <a class="reference internal" href="../exegol-wrapper/advanced-uses.html#exegol-configuration"><span class="std std-ref">configuration of Exegol</span></a>.</p>
+</div>
+<p>The user can also create an Exegol container with an <strong>existing custom workspace folder</strong> (with already existing data) regardless of its location in the file system.</p>
+<p>See the options <code class="docutils literal notranslate"><span class="pre">-w</span> <span class="pre">WORKSPACE_PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">-cwd</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+<section id="update-fs">
+<span id="feature-update-fs"></span><h4>Update-fs<a class="headerlink" href="#update-fs" title="Permalink to this heading"></a></h4>
+<p>The root user is used by default in Exegol containers which poses problems of permissions when accessing the project documents from the host.
+To remedy this without compromising, a <strong>shared permission system</strong> exists allowing the host user to have read and write access to files created from the container.</p>
+<p>This system is <strong>automatically activated</strong> when a <strong>new</strong> default workspace is created.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When the user uses an existing custom folder as workspace, this system is <strong>disabled</strong> by default! This feature can be <strong>enabled by default</strong> by changing the <a class="reference internal" href="../exegol-wrapper/advanced-uses.html#exegol-configuration"><span class="std std-ref">configuration of Exegol</span></a>.</p>
+<p>Its activation is possible manually (see the option <code class="docutils literal notranslate"><span class="pre">--update-fs</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a>) but it will lead to the <strong>modification</strong> of the folder and its sub-folders <strong>permissions</strong> (as <code class="docutils literal notranslate"><span class="pre">g+rws</span></code>).</p>
+<p>If the user does not have the rights to perform such an operation, a <strong>sudo command</strong> will be proposed to the user that he will have to <strong>execute manually</strong> to apply the necessary permissions for the proper functioning of the functionality (as <code class="docutils literal notranslate"><span class="pre">chgrp</span></code> + <code class="docutils literal notranslate"><span class="pre">g+rws</span></code>).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When the default configuration of this feature is changed and the update will be <strong>enabled by default</strong>, the option <code class="docutils literal notranslate"><span class="pre">--update-fs</span></code> can still be used to manually <strong>disable</strong> the feature in specific cases.</p>
+</div>
+</section>
+</section>
+<section id="openvpn-connection">
+<span id="feature-ovpn"></span><h3>OpenVPN connection<a class="headerlink" href="#openvpn-connection" title="Permalink to this heading"></a></h3>
+<p>Exegol supports OpenVPN tunnel configuration to <strong>automatically</strong> establish a VPN tunnel at container <strong>startup</strong>.</p>
+<p>Exegol supports certificate authentication (all files should preferably be included in a single ovpn file) but also user/password authentication through an authentication file (to allow non-interactive and transparent authentication).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A folder can also be used in the case of a <strong>multi-file configuration</strong> (with <strong>relative</strong> paths!) and the configuration file must have the <code class="docutils literal notranslate"><span class="pre">.ovpn</span></code> extension (Only <strong>one</strong> .ovpn file will be loaded by exegol).</p>
+</div>
+<p>See the options <code class="docutils literal notranslate"><span class="pre">--vpn</span> <span class="pre">VPN</span></code> and <code class="docutils literal notranslate"><span class="pre">--vpn-auth</span> <span class="pre">VPN_AUTH</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In case of problem, to troubleshoot a VPN connection, the log of OpenVPN can be retrieved within the container in the <code class="docutils literal notranslate"><span class="pre">/var/log/exegol/vpn.log</span></code> file</p>
+</div>
+</section>
+<section id="shell-logging">
+<span id="feature-shell-logging"></span><h3>Shell logging<a class="headerlink" href="#shell-logging" title="Permalink to this heading"></a></h3>
+<p>Within the framework of a mission, it is necessary to <strong>log all actions</strong> performed during a pentest, red team etc.
+To meet this need, Exegol has a feature to <strong>automatically record everything</strong> that is displayed (stdout / stderr) but also all entries (stdin).</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--log</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> to enable the feature.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When the option is enabled upon <strong>creation</strong> of a new container, all shells created for this container <strong>will be automatically logged</strong>.</p>
+<p>If the container was created <strong>without</strong> this option, the shells can still be logged <strong>individually</strong> by adding the option in the <strong>start</strong> command of <strong>each</strong> shell.</p>
+</div>
+<p>The date and time of each command is displayed thanks to the PS1 of <code class="docutils literal notranslate"><span class="pre">zsh</span></code>.</p>
+<p>The logs are automatically saved in the <code class="docutils literal notranslate"><span class="pre">/workspace/logs</span></code> folder. Each log file is <strong>automatically compressed</strong> with <code class="docutils literal notranslate"><span class="pre">gzip</span></code> at the end of the session to optimize disk space.
+The automatic compression of log files can be <strong>disabled</strong> manually with the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> <code class="docutils literal notranslate"><span class="pre">--log-compress</span></code> parameter or change the default behavior in the <a class="reference internal" href="../exegol-wrapper/advanced-uses.html#exegol-configuration"><span class="std std-ref">Exegol configuration file</span></a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When the default configuration of the log compression is changed from the config file and the feature will be <strong>disabled by default</strong>, the option <code class="docutils literal notranslate"><span class="pre">--log-compress</span></code> can still be used to manually <strong>enable</strong> the feature in specific cases.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The logs should <strong>NOT</strong> be consulted from the exegol container but <strong>from the host</strong> to avoid loops and duplication of data in the logs.</p>
+</div>
+<p>There are (since exegol images version <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>) different methods of shell logging.
+The shell logging method can be selected manually with the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> <code class="docutils literal notranslate"><span class="pre">--log-method</span></code> parameter or by default in the <a class="reference internal" href="../exegol-wrapper/advanced-uses.html#exegol-configuration"><span class="std std-ref">configuration file of Exegol</span></a>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">asciinema (default)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">script</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>The shell logging method <strong>asciinema</strong> is available from exegol images version <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>.
+This new mode allows to consult sessions in <strong>video</strong> format taking into account the interactive environment.
+It is also possible to <strong>manually upload</strong> and <strong>share</strong> recordings, useful for <strong>demonstrations</strong> for example</p>
+<p>Here is a quick demonstration:</p>
+<div align="center">
+    <script id="asciicast-lZfOEQuCKonM2htTJEz9QDWPo" src="https://asciinema.org/a/lZfOEQuCKonM2htTJEz9QDWPo.js" async></script>
+</div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Logs in <code class="docutils literal notranslate"><span class="pre">.gz</span></code> format can be replay directly <strong>without unpacking</strong> them with the command: <code class="docutils literal notranslate"><span class="pre">gunzip</span> <span class="pre">-c</span> <span class="pre">&lt;filename_shell.asciinema.gz&gt;</span> <span class="pre">|</span> <span class="pre">asciinema</span> <span class="pre">play</span> <span class="pre">-</span></code></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>To display the whole session <strong>without</strong> the “video” mode, it is possible to use the command: <code class="docutils literal notranslate"><span class="pre">asciinema</span> <span class="pre">cat</span> <span class="pre">&lt;filename_shell.asciinema&gt;</span></code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Major disadvantage of this method, to view the logs from your host, you must <strong>install</strong> <code class="docutils literal notranslate"><span class="pre">asciinema</span></code> on your <strong>host</strong> machine to replay or share your records.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When you share or play an <code class="docutils literal notranslate"><span class="pre">asciinema</span></code> video, you can <strong>copy</strong> and <strong>paste</strong> any command/text it contains.</p>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>script</strong> is the “classic” method of session logging, it was also the only option available before version <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code> of exegol images.
+This method simply records <strong>all</strong> incoming (stdin) and outgoing (stdout/stderr) shell actions in a file.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Logs in <code class="docutils literal notranslate"><span class="pre">.gz</span></code> format can be viewed directly <strong>without unpacking</strong> them with the <code class="docutils literal notranslate"><span class="pre">zcat</span></code>, <code class="docutils literal notranslate"><span class="pre">zgrep</span></code>, <code class="docutils literal notranslate"><span class="pre">zdiff</span></code> or <code class="docutils literal notranslate"><span class="pre">zmore</span></code> command!</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Shell logging saves <strong>EVERYTHING</strong> including keyboard shortcuts, display refreshes, etc.</p>
+<p>Complex graphical environments (such as tmux) can make it difficult to read the logs.</p>
+</div>
+</div></div>
+</section>
+<section id="shared-network">
+<span id="feature-shared-network"></span><h3>Shared network<a class="headerlink" href="#shared-network" title="Permalink to this heading"></a></h3>
+<p>By default, containers created by Exegol are in <code class="docutils literal notranslate"><span class="pre">host</span></code> mode which means that the <strong>network interfaces</strong> of the host are <strong>shared</strong> with the container.</p>
+<p>This configuration is useful to:</p>
+<ul class="simple">
+<li><p>dynamically open ports and services</p></li>
+<li><p>have a low level access on a physical network (some operation might need privileged mode)</p></li>
+<li><p>share a unique ip address on the target network</p></li>
+<li><p>share a MAC address on the target network (to be considered as a single physical machine)</p></li>
+</ul>
+<p>This mode can be disabled with the option <code class="docutils literal notranslate"><span class="pre">--disable-shared-network</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> to create a dedicated and isolated network instead.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When host network sharing is disabled, ports can be  to expose services on the host machine’s networks.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This mode is only available on <strong>Linux</strong> installations!
+Windows and MacOS installations are subject to the constraints and limitations of <a class="reference external" href="https://docs.docker.com/network/network-tutorial-host/#prerequisites">Docker Desktop</a> .</p>
+<p>You can still use the port <a class="reference internal" href="#feature-port-sharing"><span class="std std-ref">publishing feature</span></a> instead.</p>
+</div>
+</section>
+<section id="shared-timezones">
+<span id="feature-shared-tz"></span><h3>Shared timezones<a class="headerlink" href="#shared-timezones" title="Permalink to this heading"></a></h3>
+<p>For convenience and precision in the date and time of the logs of each command, exegol allows to share the timezone of the host in the container.</p>
+<p>This feature is active by default and can be disabled with the option <code class="docutils literal notranslate"><span class="pre">--disable-shared-timezones</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a>.</p>
+</section>
+<section id="exegol-resources">
+<span id="feature-exegol-resources"></span><h3>Exegol-resources<a class="headerlink" href="#exegol-resources" title="Permalink to this heading"></a></h3>
+<p>To save time and have at hand many tools, scripts and other resources, exegol maintains a repository <a class="reference internal" href="../exegol-resources/intro.html#exegol-resources"><span class="std std-ref">exegol-resources</span></a> contains many updated tools that are available to the host and exegol containers.</p>
+<p>This module is not mandatory and can be downloaded later.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If an antivirus is present on your host, be careful to exclude the destination folder of the <code class="docutils literal notranslate"><span class="pre">exegol-resources</span></code> module before downloading it.</p>
+</div>
+<p>This feature is active and shared by default and can be disabled with the option <code class="docutils literal notranslate"><span class="pre">--disable-exegol-resources</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a>.</p>
+</section>
+<section id="my-resources">
+<span id="feature-my-resources"></span><h3>My-resources<a class="headerlink" href="#my-resources" title="Permalink to this heading"></a></h3>
+<p>The my-resources feature is a space dedicated to the user and shared with all the containers. This space allows to store configurations and to install personal tools.</p>
+<p>More details on the functionality of the wrapper <a class="reference internal" href="../exegol-wrapper/advanced-uses.html#my-resources-wrapper"><span class="std std-ref">here</span></a> and how to take advantage of the customization system <a class="reference internal" href="../exegol-image/my-resources.html"><span class="doc">here</span></a>.</p>
+</section>
+<section id="volume-sharing">
+<span id="feature-volume-sharing"></span><h3>Volume sharing<a class="headerlink" href="#volume-sharing" title="Permalink to this heading"></a></h3>
+<p>For specific needs, the exegol wrapper allows to add additional custom volumes (type bind mounts) when creating an exegol container.</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--volume</span> <span class="pre">VOLUMES</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">action start</span></a> for more details.</p>
+</section>
+<section id="port-sharing">
+<span id="feature-port-sharing"></span><h3>Port sharing<a class="headerlink" href="#port-sharing" title="Permalink to this heading"></a></h3>
+<p>When the host network is not shared, it is still possible to <strong>publish</strong> specific ports to expose <strong>services</strong> or <strong>port</strong> ranges.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This configuration is <strong>compatible</strong> even with installations based on Docker Desktop.</p>
+</div>
+<p>This feature allows the user to select:</p>
+<ul class="simple">
+<li><p>a specific network interface (for example 127.0.0.1) or by default all interfaces (0.0.0.0).</p></li>
+<li><p>the port to open on the host interface.</p></li>
+<li><p>the destination port to be linked in the container.</p></li>
+<li><p>the protocol to use, docker supports <code class="docutils literal notranslate"><span class="pre">TCP</span></code>, <code class="docutils literal notranslate"><span class="pre">UDP</span></code> and <code class="docutils literal notranslate"><span class="pre">SCTP</span></code> protocols (default is TCP).</p></li>
+</ul>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">PORTS</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+</section>
+<section id="env-variables">
+<span id="feature-env"></span><h3>Env. variables<a class="headerlink" href="#env-variables" title="Permalink to this heading"></a></h3>
+<p>Exegol can configure custom environment variables defined by the user.</p>
+<p>When the environment variables are defined at the first time of the container creation, these variables will be:</p>
+<ul class="simple">
+<li><p>accessible in the container by all processes</p></li>
+<li><p>present during the whole lifetime of the container</p></li>
+</ul>
+<p>The environment variables can be defined when opening a shell in an <strong>existing</strong> container and will be available <strong>only</strong> in the user’s shell until it is closed.</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--env</span> <span class="pre">ENVS</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+</section>
+<section id="device-sharing">
+<span id="feature-device-sharing"></span><h3>Device sharing<a class="headerlink" href="#device-sharing" title="Permalink to this heading"></a></h3>
+<p>For the needs of some applications running on physical hardware (such as proxmark3), exegol can supply the container with one or more physical devices.</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">DEVICES</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This feature is only available on <strong>Linux</strong> installations!</p>
+<p>Windows and MacOS installations are subject to the constraints and limitations of <a class="reference external" href="https://docs.docker.com/desktop/faqs/#can-i-pass-through-a-usb-device-to-a-container">Docker Desktop</a>.</p>
+</div>
+</section>
+<section id="custom-hostname">
+<span id="feature-hostname"></span><h3>Custom hostname<a class="headerlink" href="#custom-hostname" title="Permalink to this heading"></a></h3>
+<p>In some environments with OPSEC requirements, it may be necessary to change the hostname of your exegol container.</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--hostname</span> <span class="pre">HOSTNAME</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+</section>
+<section id="comments">
+<span id="feature-comment"></span><h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading"></a></h3>
+<p>To add more context information about an exegol container, it is possible to add <strong>comments</strong> to each Exegol container.
+The comment of an exegol container can be displayed with the command <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">info</span> <span class="pre">&lt;container_name&gt;</span></code></p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--comment</span> <span class="pre">COMMENT</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+</section>
+<section id="capabilities">
+<span id="feature-capabilities"></span><h3>Capabilities<a class="headerlink" href="#capabilities" title="Permalink to this heading"></a></h3>
+<p>Exegol supports adding <strong>Linux capabilities</strong> to the Exegol <strong>container</strong> to perform tasks that require <strong>administrative</strong> rights <strong>without</strong> allowing everything.</p>
+<p>This feature gives control to the user to configure his container but giving administrator rights remains a dangerous practice and should be used by experienced users only.</p>
+<p>For more details on the capabilities supported by docker <a class="reference external" href="https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities">check here</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all Linux capabilities are allowed by the Exegol wrapper, here is the list of available capabilities:</p>
+<p>NET_ADMIN, NET_BROADCAST, SYS_MODULE, SYS_PTRACE, SYS_RAWIO, SYS_ADMIN, LINUX_IMMUTABLE, MAC_ADMIN, SYSLOG</p>
+<p>For all other needs, consider the <a class="reference internal" href="#feature-privileged"><span class="std std-ref">privileged</span></a> mode.</p>
+</div>
+</section>
+<section id="privileged">
+<span id="feature-privileged"></span><h3>Privileged<a class="headerlink" href="#privileged" title="Permalink to this heading"></a></h3>
+<p>For particular needs, it is sometimes necessary to have <strong>privileged rights</strong> to perform certain actions.
+If Exegol does <strong>not</strong> allow you to have specifically the rights necessary, you can configure your container in privileged mode to get <strong>full administrator rights</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This configuration is particularly <strong>dangerous</strong> because it gives the container <strong>full admin control</strong> over the <strong>kernel</strong> of the <strong>host</strong> machine.</p>
+<p>Use this option <strong>only</strong> if you know <strong>exactly</strong> what you are doing!!</p>
+<p>If the need is specifically identified, consider adding <a class="reference internal" href="#feature-capabilities"><span class="std std-ref">capabilities</span></a> instead!</p>
+</div>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--privileged</span></code> of the <a class="reference internal" href="../exegol-wrapper/start.html#start-options"><span class="std std-ref">start action</span></a> for more details.</p>
+</section>
+<section id="multi-architecture">
+<span id="feature-multi-arch"></span><h3>Multi-architecture<a class="headerlink" href="#multi-architecture" title="Permalink to this heading"></a></h3>
+<p>Exegol supports <code class="docutils literal notranslate"><span class="pre">ARM64</span></code> architecture (in addition to the classic <code class="docutils literal notranslate"><span class="pre">AMD64</span></code>) since version <code class="docutils literal notranslate"><span class="pre">4.1.0</span></code> of the wrapper and <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code> of the images.</p>
+<p>This support allows you to fully use exegol on hardware equipped with an <strong>ARM</strong> processor (such as Mac M1 / M2 but also some Raspberry Pi).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Exegol only supports <strong>64-bit ARM</strong> architecture! If your ARM processor supports 64-bit, make sure your <strong>OS</strong> is also installed in <strong>64-bit version</strong> to use exegol!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For experienced users or developers, it is possible to explicitly modify the architecture used by the Exegol wrapper with the <a class="reference internal" href="../exegol-wrapper/version.html#general-options"><span class="std std-ref">general option</span></a> <code class="docutils literal notranslate"><span class="pre">--arch</span> <span class="pre">ARCH</span></code>.</p>
+<p>But be <strong>careful</strong>, the modification of this parameter can lead to <strong>malfunctions</strong>!</p>
+</div>
+</section>
+<section id="local-image-building">
+<span id="feature-image-building"></span><h3>Local image building<a class="headerlink" href="#local-image-building" title="Permalink to this heading"></a></h3>
+<p>The wrapper allows users to locally build their images from the <code class="docutils literal notranslate"><span class="pre">exegol-images</span></code> sources.</p>
+<p>More information in the <a class="reference internal" href="../exegol-wrapper/advanced-uses.html#local-build"><span class="std std-ref">advanced uses</span></a> section.</p>
+</section>
+<section id="remote-image-pulling">
+<span id="feature-image-pulling"></span><h3>Remote image pulling<a class="headerlink" href="#remote-image-pulling" title="Permalink to this heading"></a></h3>
+<p>To save time, pre-built images are available for download from DockerHub.
+These images can be downloaded and installed / updated from the exegol wrapper with the <a class="reference internal" href="../exegol-wrapper/install.html"><span class="doc">install</span></a> and <a class="reference internal" href="../exegol-wrapper/update.html"><span class="doc">update</span></a> actions.</p>
+</section>
+<section id="command-execution">
+<span id="feature-exec"></span><h3>Command execution<a class="headerlink" href="#command-execution" title="Permalink to this heading"></a></h3>
+<p>The Exegol wrapper does not only allow the opening of interactive shells, it is also possible to execute <strong>single commands</strong> in several ways.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To see the execution logs of the command, the user must add the parameter <code class="docutils literal notranslate"><span class="pre">-v</span></code>.</p>
+</div>
+<p>The details of this functionality are detailed in the <a class="reference internal" href="../exegol-wrapper/exec.html"><span class="doc">exec</span></a> action.</p>
+<section id="daemon-execution">
+<span id="feature-exec-daemon"></span><h4>Daemon execution<a class="headerlink" href="#daemon-execution" title="Permalink to this heading"></a></h4>
+<p>One of the execution modes can be in the <strong>background</strong> like a daemon service.
+In this way the wrapper executes the <strong>user’s command</strong>, for example an application such as bloodhound.
+The wrapper <strong>launches</strong> the task in an exegol container and <strong>finishes immediately</strong> without occupying the user’s terminal, leaving the application <strong>open</strong>.</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--background</span></code> of the <a class="reference internal" href="../exegol-wrapper/exec.html#exec-options"><span class="std std-ref">exec action</span></a> for more details.</p>
+</section>
+<section id="temporary-containers">
+<span id="feature-exec-tmp"></span><h4>Temporary containers<a class="headerlink" href="#temporary-containers" title="Permalink to this heading"></a></h4>
+<p>Another feature of the <a class="reference internal" href="../exegol-wrapper/exec.html"><span class="doc">exec</span></a> action is the execution in a <strong>temporary</strong> container.</p>
+<p>In this mode, a <strong>temporary</strong> container will be created and <strong>dedicated</strong> to the execution of the command specified by the user.</p>
+<p>This mode can be useful to run a given command with the most <strong>up-to-date</strong> image already installed on the host, for any <strong>test</strong> or for special <strong>privacy</strong> needs.</p>
+<p>See the option <code class="docutils literal notranslate"><span class="pre">--tmp</span></code> of the <a class="reference internal" href="../exegol-wrapper/exec.html#exec-options"><span class="std std-ref">exec action</span></a> for more details.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getting-started/updates.html" class="btn btn-neutral float-left" title="Updates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker-images.html" class="btn btn-neutral float-right" title="Docker images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Shutdown &amp; Dramelac.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

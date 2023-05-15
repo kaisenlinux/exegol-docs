@@ -1,0 +1,9 @@
+Package: exegol-docs
+Version: 4.2.2-1kaisen
+Architecture: amd64
+Maintainer: Mehdi Lecomte - Labrute! <labrute@kaisenlinux.org>
+Installed-Size: 6948
+Section: docs
+Priority: optional
+Homepage: https://exegol.readthedocs.io/
+Description: The HTML documentation for the Exegol tool

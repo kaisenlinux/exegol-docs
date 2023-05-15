@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install Exegol &mdash; Exegol 4.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/logo_round.ico"/>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Updates" href="updates.html" />
+    <link rel="prev" title="Exegol: professional hacking setup" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Exegol
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Install Exegol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-exegol">1. Installation of exegol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-exegol-to-the-path">2. Adding Exegol to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-using-exegol-auto-completion">3. (Optional) Using Exegol auto-completion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-the-first-exegol-image">4. Installation of the first Exegol image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="updates.html">Updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Exegol Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../the-exegol-project/python-wrapper.html">Python Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-exegol-project/docker-images.html">Docker images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-exegol-project/offline-resources.html">Offline resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Exegol wrapper</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/install.html"><code class="code docutils literal notranslate"><span class="pre">install</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/start.html"><code class="code docutils literal notranslate"><span class="pre">start</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/info.html"><code class="code docutils literal notranslate"><span class="pre">info</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/exec.html"><code class="code docutils literal notranslate"><span class="pre">exec</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/update.html"><code class="code docutils literal notranslate"><span class="pre">update</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/stop.html"><code class="code docutils literal notranslate"><span class="pre">stop</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/restart.html"><code class="code docutils literal notranslate"><span class="pre">restart</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/remove.html"><code class="code docutils literal notranslate"><span class="pre">remove</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/uninstall.html"><code class="code docutils literal notranslate"><span class="pre">uninstall</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/version.html"><code class="code docutils literal notranslate"><span class="pre">version</span></code> action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-wrapper/advanced-uses.html">Advanced uses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Exegol image</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-image/credentials.html">Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-image/my-resources.html">My resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Exegol resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exegol-resources/intro.html">Intro</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/maintainers.html">Maintainers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/sponsors.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/credits.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Exegol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Install Exegol</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting-started/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-exegol">
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">Install Exegol</a><a class="headerlink" href="#install-exegol" title="Permalink to this heading"></a></h1>
+<p>Installing Exegol starts with installing the entrypoint to the whole project: the Python wrapper. Once the wrapper is installed, everything else can be managed from it.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It is strongly advised to install Exegol on a Linux host, especially when planning on using Exegol for internal penetration tests. This is because Docker Desktop on Windows and macOS lacks a few features, mainly due to how these operating systems run Docker containers within an internal VM that doesn’t share the host’s network interfaces and USB accessories.</p>
+</div>
+<p>Once the wrapper is installed, the second step in setting up Exegol on a device is to install at least one Exegol image, either with <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">start</span></code> (documentation
+<a class="reference internal" href="../exegol-wrapper/start.html"><span class="doc">here</span></a>), or with <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">install</span></code> (documentation
+<a class="reference internal" href="../exegol-wrapper/install.html"><span class="doc">here</span></a>). Both actions will guide the user in installing an image if needed.</p>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#install-exegol" id="id3">Install Exegol</a></p>
+<ul>
+<li><p><a class="reference internal" href="#requirements" id="id4">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id5">Installation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#installation-of-exegol" id="id6">1. Installation of exegol</a></p></li>
+<li><p><a class="reference internal" href="#adding-exegol-to-the-path" id="id7">2. Adding Exegol to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code></a></p></li>
+<li><p><a class="reference internal" href="#optional-using-exegol-auto-completion" id="id8">3. (Optional) Using Exegol auto-completion</a></p></li>
+<li><p><a class="reference internal" href="#installation-of-the-first-exegol-image" id="id9">4. Installation of the first Exegol image</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="requirements">
+<span id="install-requirements"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<p>The following elements are required before Exegol can be installed, whatever the host’s operating system is:</p>
+<ul class="simple">
+<li><p>git (<a class="reference external" href="https://github.com/git-guides/install-git#install-git-on-linux">Linux</a> | <a class="reference external" href="https://github.com/git-guides/install-git#install-git-on-mac">macOS</a> | <a class="reference external" href="https://github.com/git-guides/install-git#install-git-on-windows">Windows</a>)</p></li>
+<li><p>python3 (<a class="reference external" href="https://docs.python.org/3/using/unix.html#on-linux">Linux</a> | <a class="reference external" href="https://www.python.org/downloads/macos/">macOS</a> | <a class="reference external" href="https://www.python.org/downloads/windows/">Windows</a>)</p></li>
+<li><p>docker (<a class="reference external" href="https://docs.docker.com/engine/install/debian/">Linux</a> | <a class="reference external" href="https://docs.docker.com/desktop/install/mac-install/">macOS</a> | <a class="reference external" href="https://docs.docker.com/desktop/install/windows-install/">Windows</a>)</p></li>
+<li><p>at least 20GB of free storage</p></li>
+</ul>
+<p>Additional dependencies may be required depending on the host OS.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>No additional dependencies for Linux environments.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>From Linux systems, Docker can be installed quickly and easily with the following command-line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">&quot;https://get.docker.com/&quot;</span><span class="w"> </span>-o<span class="w"> </span>get-docker.sh
+sh<span class="w"> </span>get-docker.sh
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">sudo</span></code> will be required when running docker, hence needed as well for Exegol. For security reasons, it should stay that way, but it’s possible to change that. In order to run exegol from the user environment without <code class="docutils literal notranslate"><span class="pre">sudo</span></code>, the user must have the appropriate rights. You can use the following command to grant them to the current user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># add the sudo group to the user</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span>-n<span class="k">)</span>
+
+<span class="c1"># &quot;reload&quot; the user groups with the newly added docker group</span>
+newgrp<span class="w"> </span>docker
+</pre></div>
+</div>
+<p>For more information, official Docker documentation shows <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-userm">how to manage docker as a non root user</a>.</p>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>To support graphical applications (<a class="reference internal" href="../the-exegol-project/python-wrapper.html#feature-display-sharing"><span class="std std-ref">display sharing functionality</span></a>, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.xquartz.org/">XQuartz</a> must be installed</p></li>
+<li><p>The XQuartz config <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">connections</span> <span class="pre">from</span> <span class="pre">network</span> <span class="pre">clients</span></code> must be set to true</p></li>
+<li><p>Docker Desktop must be configured with default File Sharing (see screenshot below)</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<img alt="macOS XQuartz configuration requirement" src="../_images/macOS_xquartz_config.png" />
+<figcaption>
+<p><span class="caption-text">macOS XQuartz configuration requirement</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<img alt="macOS Docker Desktop resources requirement" src="../_images/macOS_resources_req.png" />
+<figcaption>
+<p><span class="caption-text">macOS Docker Desktop resources requirement</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://orbstack.dev/">OrbStack</a> for <strong>Mac</strong> is supported by Exegol wrapper from <code class="docutils literal notranslate"><span class="pre">v4.2.0</span></code>.</p>
+<p>This support is still in beta, feel free to open issues on <a class="reference external" href="https://github.com/ThePorgs/Exegol/issues/new/choose">GitHub</a> if you encounter any bugs.</p>
+</div>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>To support graphical applications (<a class="reference internal" href="../the-exegol-project/python-wrapper.html#feature-display-sharing"><span class="std std-ref">display sharing functionality</span></a>, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:</p>
+<ul class="simple">
+<li><p>Windows <strong>11</strong> is needed</p></li>
+<li><p>Docker must run on <strong>WSL2</strong> engine (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">how to</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/wslg#installing-wslg">WSLg</a> must be installed</p></li>
+<li><p>at least one WSL distribution must be <strong>installed</strong> as well (e.g. Debian), with <strong>Docker integration</strong> enabled</p></li>
+</ul>
+</div></div>
+</section>
+<section id="installation">
+<span id="exegol-install"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Installation</a><a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>The installation of Exegol on Linux, macOS and Windows are very similar. It can either be installed from pip (easiest, most user-friendly, but with a few missing features) or from sources (easy as well, fully featured).</p>
+<section id="installation-of-exegol">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">1. Installation of exegol</a><a class="headerlink" href="#installation-of-exegol" title="Permalink to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-SW5zdGFsbGluZyB3aXRoIHBpcA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SW5zdGFsbGluZyB3aXRoIHBpcA==" name="SW5zdGFsbGluZyB3aXRoIHBpcA==" role="tab" tabindex="0">Installing with pip</button><button aria-controls="panel-1-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" name="SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" role="tab" tabindex="-1">Installing from sources</button></div><div aria-labelledby="tab-1-SW5zdGFsbGluZyB3aXRoIHBpcA==" class="sphinx-tabs-panel group-tab" id="panel-1-SW5zdGFsbGluZyB3aXRoIHBpcA==" name="SW5zdGFsbGluZyB3aXRoIHBpcA==" role="tabpanel" tabindex="0"><p>Exegol’s wrapper can be installed from pip.
+While this is the easiest and most user-friendly technique, for more advanced users it is advised to install from sources, as it allows to switch from release to dev branches easily and the auto-update feature is supported.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>exegol
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" name="SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" role="tabpanel" tabindex="0"><p>Exegol’s wrapper can also be installed from sources (with Git). The wrapper then knows how to self-update, and switching from release and development branches is possible and very easy.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;https://github.com/ThePorgs/Exegol&quot;</span>
+</pre></div>
+</div>
+<p>If you have access to docker directly as a user, you can install the requirements only for your current user
+otherwise the requirements must be installed as root to run Exegol with sudo.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">With sudo</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Directly as user</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--requirement<span class="w"> </span><span class="s2">&quot;Exegol/requirements.txt&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--requirement<span class="w"> </span><span class="s2">&quot;Exegol/requirements.txt&quot;</span>
+</pre></div>
+</div>
+</div></div>
+</div></div>
+</section>
+<section id="adding-exegol-to-the-path">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">2. Adding Exegol to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code></a><a class="headerlink" href="#adding-exegol-to-the-path" title="Permalink to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-3-SW5zdGFsbGluZyB3aXRoIHBpcA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-SW5zdGFsbGluZyB3aXRoIHBpcA==" name="SW5zdGFsbGluZyB3aXRoIHBpcA==" role="tab" tabindex="0">Installing with pip</button><button aria-controls="panel-3-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" name="SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" role="tab" tabindex="-1">Installing from sources</button></div><div aria-labelledby="tab-3-SW5zdGFsbGluZyB3aXRoIHBpcA==" class="sphinx-tabs-panel group-tab" id="panel-3-SW5zdGFsbGluZyB3aXRoIHBpcA==" name="SW5zdGFsbGluZyB3aXRoIHBpcA==" role="tabpanel" tabindex="0"><p>If your pip installation is correct and functional, you have nothing more to do and you can already use the command <code class="docutils literal notranslate"><span class="pre">exegol</span></code>.</p>
+<p>If not, remember that pip installs binaries in a <strong>dedicated</strong> local folder, which then <strong>must</strong> be in the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable.
+Try to fix your pip installation: <a class="reference external" href="https://stackoverflow.com/a/62823029">Linux</a> | <a class="reference external" href="https://stackoverflow.com/a/43368894">MacOS</a> | <a class="reference external" href="https://builtin.com/software-engineering-perspectives/pip-command-not-found">Windows</a></p>
+</div><div aria-labelledby="tab-3-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" name="SW5zdGFsbGluZyBmcm9tIHNvdXJjZXM=" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Linux &amp; MacOS</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p>Once this is taken care of, the exegol wrapper can then be added to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> with a symlink for direct access. This allows to call exegol from wherever, instead of to use the absolute path. Exegol can then be used with <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">&lt;action&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">/path/to/Exegol/exegol.py</span> <span class="pre">&lt;action&gt;</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/exegol.py&quot;</span><span class="w"> </span><span class="s2">&quot;/usr/local/bin/exegol&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>Once this is taken care of, the exegol wrapper can then can be added as a PowerShell command alias and saved for persistence
+in <code class="docutils literal notranslate"><span class="pre">$HOME\PowershellAliasesExport.txt</span></code>
+then loaded from <code class="docutils literal notranslate"><span class="pre">$PROFILE</span></code> script at PowerShell startup. Exegol can then be used with <code class="docutils literal notranslate"><span class="pre">exegol</span> <span class="pre">&lt;action&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">/path/to/Exegol/exegol.py</span> <span class="pre">&lt;action&gt;</span></code>.</p>
+<p>To create the alias file correctly, open a powershell and place yourself in the folder where exegol is located (applicable only for <cite>from source</cite> installations) and run the following commands:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$AliasFile</span> <span class="p">=</span> <span class="s2">&quot;$HOME\PowershellAliasesExport.txt&quot;</span>
+<span class="nb">Set-Alias</span> <span class="n">-Name</span> <span class="n">exegol</span> <span class="n">-Value</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="n">pwd</span><span class="p">)</span><span class="s2">\exegol.py&quot;</span>
+<span class="nb">Get-Alias</span> <span class="n">-Name</span> <span class="s2">&quot;exegol&quot;</span> <span class="p">|</span> <span class="nb">Export-Alias</span> <span class="n">-Path</span> <span class="nv">$AliasFile</span>
+<span class="nb">echo </span><span class="s2">&quot;Import-Alias &#39;$AliasFile&#39;&quot;</span> <span class="p">&gt;&gt;</span> <span class="nv">$PROFILE</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To automatically load aliases from the <code class="docutils literal notranslate"><span class="pre">.ps1</span></code> file, PowerShell’s <code class="docutils literal notranslate"><span class="pre">Get-ExecutionPolicy</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">RemoteSigned</span></code>.</p>
+<p>If the configuration is not correct it can be configured as <strong>administrator</strong> with the following command:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you have installed Python3 manually and Windows opens the <strong>Microsoft store</strong> on the python page as soon as you type <code class="docutils literal notranslate"><span class="pre">python3.exe</span></code>, try this:</p>
+<p>It is possible to disable this behavior in the Windows settings: <code class="docutils literal notranslate"><span class="pre">Apps</span> <span class="pre">&gt;</span> <span class="pre">Apps</span> <span class="pre">&amp;</span> <span class="pre">features</span> <span class="pre">&gt;</span> <span class="pre">App</span> <span class="pre">execution</span> <span class="pre">aliases</span></code> and disable aliases for <code class="docutils literal notranslate"><span class="pre">python.exe</span></code> and <code class="docutils literal notranslate"><span class="pre">python3.exe</span></code>.</p>
+</div>
+</div></div>
+</div></div>
+</section>
+<section id="optional-using-exegol-auto-completion">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">3. (Optional) Using Exegol auto-completion</a><a class="headerlink" href="#optional-using-exegol-auto-completion" title="Permalink to this heading"></a></h3>
+<p>Exegol supports auto-completion in many shell environments but there is a configuration to add for this feature to work.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you have a source installation, make sure you have installed (or updated) the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> packages before using the completer.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"></div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">Bash</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Zsh</button><button aria-controls="panel-6-6-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-2" name="6-2" role="tab" tabindex="-1">Fish</button><button aria-controls="panel-6-6-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-3" name="6-3" role="tab" tabindex="-1">Tcsh</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p>You can enable Exegol auto-completion for your <strong>current user</strong> with your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> or you can enable the auto-completion <strong>system-wide</strong> with <code class="docutils literal notranslate"><span class="pre">bash-completion</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">Via bash-completion</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Via .bashrc</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p>To setup the auto-completion system-wide you first need to install <code class="docutils literal notranslate"><span class="pre">bash-completion</span></code> on your system (if not already installed).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>bash-completion
+</pre></div>
+</div>
+<p>At this point you should have a <code class="docutils literal notranslate"><span class="pre">/etc/bash_completion.d/</span></code> folder. It’s in there that you can add any auto-completion module that you want.</p>
+<p>To generate and install the exegol completion configuration you can execute the following command with <code class="docutils literal notranslate"><span class="pre">register-python-argcomplete</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>register-python-argcomplete<span class="w"> </span>--no-defaults<span class="w"> </span>exegol<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/bash_completion.d/exegol<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p>Add the following command in your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> config:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>register-python-argcomplete<span class="w"> </span>--no-defaults<span class="w"> </span>exegol<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you have multiple tools using <code class="docutils literal notranslate"><span class="pre">argcomplete</span></code> you can also use the <a class="reference external" href="https://kislyuk.github.io/argcomplete/#global-completion">global completion</a> method (need bash &gt;= 4.2).</p>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p>To activate completions for zsh you need to have <code class="docutils literal notranslate"><span class="pre">bashcompinit</span></code> enabled in zsh:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>autoload<span class="w"> </span>-U<span class="w"> </span>bashcompinit
+bashcompinit
+</pre></div>
+</div>
+<p>Afterwards you can enable completion by adding the following command in your <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code> config:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>register-python-argcomplete<span class="w"> </span>--no-defaults<span class="w"> </span>exegol<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-2" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-2" name="6-2" role="tabpanel" tabindex="0"><p>To activate completions for fish use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>register-python-argcomplete<span class="w"> </span>--no-defaults<span class="w"> </span>--shell<span class="w"> </span>fish<span class="w"> </span>exegol<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">source</span>
+</pre></div>
+</div>
+<p>or create new completion file, e.g:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>register-python-argcomplete<span class="w"> </span>--no-defaults<span class="w"> </span>--shell<span class="w"> </span>fish<span class="w"> </span>exegol<span class="w"> </span>&gt;<span class="w"> </span>~/.config/fish/completions/exegol.fish
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-3" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-3" name="6-3" role="tabpanel" tabindex="0"><p>To activate completions for tcsh use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="sb">`</span>register-python-argcomplete<span class="w"> </span>--no-defaults<span class="w"> </span>--shell<span class="w"> </span>tcsh<span class="w"> </span>exegol<span class="sb">`</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="installation-of-the-first-exegol-image">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">4. Installation of the first Exegol image</a><a class="headerlink" href="#installation-of-the-first-exegol-image" title="Permalink to this heading"></a></h3>
+<p>Once the exegol wrapper is installed, you can download your first docker image with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>exegol<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Exegol: professional hacking setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updates.html" class="btn btn-neutral float-right" title="Updates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Shutdown &amp; Dramelac.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
