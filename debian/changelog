@@ -1,3 +1,9 @@
+exegol-docs (4.2.2-1kaisen) kaisen-packages; urgency=medium
+
+  * Fix the copyright for Exegol-docs
+
+ -- Mehdi Lecomte - Labrute! <labrute@kaisenlinux.org>  Thu, 16 May 2023 01:31:20 +0100
+
 exegol-docs (4.2.1-1kaisen) kaisen-packages; urgency=medium
 
   * Import the documentation for the 4.2.1 release of Exegol
