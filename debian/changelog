@@ -1,8 +1,13 @@
 exegol-docs (4.2.2-1kaisen) kaisen-packages; urgency=medium
 
+  [ Labrute! ]
   * Fix the copyright for Exegol-docs
+  * Bump the version in 4.2.2
 
- -- Mehdi Lecomte - Labrute! <labrute@kaisenlinux.org>  Thu, 16 May 2023 01:31:20 +0100
+  [ Kaisen ]
+  * Define Kaisen as the uploader
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>  Thu, 16 May 2023 02:07:29 +0100
 
 exegol-docs (4.2.1-1kaisen) kaisen-packages; urgency=medium
 
