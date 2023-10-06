@@ -48,6 +48,9 @@ Even if the wrapper is able to auto-update itself, it is always better to keep t
 
             exegol update -v
 
+.. important::
+    Don't forget to **reload and commit** any **submodule update** at this step !
+
 2. Config reviews
 ~~~~~~~~~~~~~~~~~
 
@@ -59,6 +62,12 @@ Even if the wrapper is able to auto-update itself, it is always better to keep t
 
 Tests & build
 -------------
+
+First, test the code with mypy:
+
+.. code-block:: bash
+
+    mypy exegol.py --ignore-missing-imports --check-untyped-defs
 
 You can execute this one-liner to check the project and build it.
 
@@ -83,8 +92,13 @@ Post build
 * Publish PR
 * Wait for review and merge
 
-Upload
-------
+Manual Upload
+-------------
+
+.. important::
+    PyPi packaging and upload is now handle by **GitHub action**. It will be triggered with the creation of the **new tag** in the next-step with the release creation.
+
+    **This step is no longer needed.**
 
 After validation of the PR, we can upload the new version package to pypi.
 
@@ -107,7 +121,7 @@ After validation of the PR, we can upload the new version package to pypi.
 Post-Deploy
 -----------
 
-* Create new github release with new version tag
+* Create new github **release** with **new** version tag
 * Fast-forward dev branch to the latest master commit
 * Change the wrapper version on the dev branch to ``x.y.zb1``
 
@@ -180,8 +194,31 @@ CI/CD Pipeline
 
 The Exegol project relies on a continuous integration and continuous deployment (CI/CD) pipeline for multiple scenarios. At the time of writing, Tue 31 Jan 2023, the pipeline is structured as follows:
 
-* the GitHub Actions platform is used on :doc:`the Exegol-images submodule </the-exegol-project/docker-images>`. Its workflows allow to build and push images on `the official Dockerhub registry <https://hub.docker.com/repository/docker/nwodtuhs/exegol>`_, run tests to make sure the tools are installed properly, run tests to help review pull requests, etc. GitHub Actions workflows are also being developped for packaging and publishing the Python wrapper on PyPI (`Exegol on PyPI <https://pypi.org/project/Exegol>`_).
-* no pipeline(s) yet on the Python wrapper, resources, docs, etc. But it's definitely in the roadmap.
+..  tabs::
+
+    ..  tab:: wrapper
+
+        The GitHub Actions platform is used on :doc:`the Exegol module </the-exegol-project/python-wrapper>`. Its workflows are used for internal and external pull requests, new releases and testing on every commit. The workflows build, and push Python packages on `the official PyPI registry <https://pypi.org/project/Exegol/>`_, and run tests to make sure everything works as it should.
+
+    ..  tab:: images
+
+        The GitHub Actions platform is used on :doc:`the Exegol-images submodule </the-exegol-project/docker-images>`. Its workflows run for internal and external pull requests, new commits, new tags, and allow to:
+
+        * build AMD64 and ARM64 images on self-hosted runners
+        * run tests to make sure the tools are installed properly
+        * automatically export tools list to the documentation
+        * push the images on `the official Dockerhub registry <https://hub.docker.com/repository/docker/nwodtuhs/exegol>`_
+
+        .. image:: /assets/gh_pipelines.png
+            :align: center
+            :alt: Pipelines (GitHub)
+
+    ..  tab:: docs
+
+        The GitHub Actions platform is used for the documentation you're reading. Its workflows are used to build on every commit and pull request to make sure everything works as it should, but also automatically merge changes between the various branches in order to help with development.
+
+        ReadTheDocs then builds the final version on every commit for multiple branches (main, dev, dev-images, dev-wrapper) and hosts it online at https://exegol.readthedocs.io/.
+
 
 GitHub Actions
 --------------
@@ -392,3 +429,20 @@ _____________
 When there's not enough
 
 You are running out of disk space. The runner will stop working when the machine runs out of disk space. Free space left: 62 MB
+
+
+Pull Requests
+=============
+
+When handling pull requests, maintainers may need to `synchronize a contributor's fork with latests changes <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork>`_. In command-line, this can be achieved as follows.
+
+.. code-block:: bash
+
+    git clone "git@github.com:USER/FORK" "dest_dir"
+    cd dest_dir
+    git remote add upstream "git@github.com:ThePorgs/REPO"
+    git fetch upstream
+    git checkout "TARGET_FORK_BRANCH"
+    git merge --no-edit upstream/"ORIGIN_BRANCH"
+    # solve conflicts if any
+    git push
