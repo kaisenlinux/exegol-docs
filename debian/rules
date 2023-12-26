@@ -12,4 +12,4 @@ override_dh_auto_build:
 override_dh_auto_test:
 
 override_dh_auto_install:
-	cp -rf $(CURDIR)/build/html/* $(CURDIR)/debian/exegol-docs/usr/share/doc/exegol/
+	cp -rf $(CURDIR)/build/html/* $(CURDIR)/debian/exegol-docs/usr/share/exegol-docs

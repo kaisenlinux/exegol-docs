@@ -10,7 +10,7 @@ Exegol: professional hacking setup
       <br><br>
       <a target="_blank" rel="noopener noreferrer" href="https://pypi.org/project/Exegol" title=""><img src="https://img.shields.io/pypi/v/Exegol?color=informational" alt="pip package version"></a>
       <img alt="Python3.7" src="https://img.shields.io/badge/Python-3.7+-informational">
-      <a target="_blank" rel="noopener noreferrer" href="https://pepy.tech/project/exegol" title=""><img src="https://static.pepy.tech/personalized-badge/exegol?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=Downloads" alt="pip stats"></a>
+      <img alt="latest commit on master" src="https://img.shields.io/docker/pulls/nwodtuhs/exegol.svg?label=downloads">
       <br><br>
       <img alt="latest commit on master" src="https://img.shields.io/github/last-commit/ThePorgs/Exegol/master?label=latest%20release">
       <img alt="latest commit on dev" src="https://img.shields.io/github/last-commit/ThePorgs/Exegol/dev?label=latest%20dev">
@@ -94,6 +94,8 @@ Wanna chat? Need help? Join us on the `Exegol discord`_!
 
    getting-started/install.rst
    getting-started/updates.rst
+   getting-started/faq.rst
+   getting-started/tips-and-tricks.rst
 
 .. toctree::
    :maxdepth: 2
@@ -127,15 +129,16 @@ Wanna chat? Need help? Join us on the `Exegol discord`_!
    :caption: Exegol image
 
    exegol-image/tools.rst
-   exegol-image/credentials.rst
    exegol-image/my-resources.rst
+   exegol-image/credentials.rst
+   exegol-image/services.rst
 
 .. toctree::
    :maxdepth: 2
    :hidden:
    :caption: Exegol resources
 
-   exegol-resources/intro.rst
+   exegol-resources/resources.rst
 
 .. toctree::
    :maxdepth: 2

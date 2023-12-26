@@ -9,7 +9,7 @@ My resources
 
 To learn more about the volume options, details are available :ref:`here <My-resources-wrapper>`.
 
-Below are the features offered by "My-resources", allowing users to extend Exegol beyond what is initially included (`tools <todo>`_, `resources </exegol-resources/intro>`_).
+Below are the features offered by "My-resources", allowing users to extend Exegol beyond what is initially included (`tools <todo>`_, `resources </exegol-resources/resources>`_).
 
 ..
     _TODO: add ref to images tools list
@@ -19,6 +19,7 @@ Below are the features offered by "My-resources", allowing users to extend Exego
 * :ref:`User setup <User-setup>`: In this functionality, a shell script can be populated with every command a user wishes its containers to run at their creation.
 
 .. contents::
+    :local:
 
 .. _Custom-tools:
 
@@ -89,7 +90,7 @@ To automatically:
     The output will be saved into the single file ``~/.config/bloodhound/customqueries.json``.
 
 
-:code:`firefox` (addons)
+:code:`firefox` (addons, CA)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 .. seealso::
     Available from version ``3.0.2`` of any exegol image.
@@ -97,7 +98,13 @@ To automatically:
 A system exists to easily install arbitrary firefox addons in any new exegol container.
 
 The ``/opt/my-resources/setup/firefox/addons.txt`` file allows the user to list addons to install from online sources. It must be filled with their links in Mozilla's shop (for example https://addons.mozilla.org/fr/firefox/addon/foxyproxy-standard/ ).
+
 The ``.xpi`` files in ``/opt/my-resources/setup/firefox/addons/`` folder will be installed as well.
+
+.. seealso::
+    Below, available from version ``3.2.0`` of any exegol image.
+
+The ``.der`` files in ``/opt/my-resources/setup/firefox/CA/`` folder will be trusted .
 
 
 :code:`python3` (pip3)
@@ -147,6 +154,7 @@ Exegol supports overwriting its **vim** configuration to allow all users to use 
     Will be available from version ``3.1.2`` of any exegol image.
 
 Exegol supports overwriting its **neovim** configuration to allow all users to use their personal configuration.
+
 * To automatically overwrite the ``~/.config/nvim/`` configuration, copy your config in  ``/opt/my-resources/setup/nvim/``
 
 .. tip::

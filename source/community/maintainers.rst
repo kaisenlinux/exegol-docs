@@ -2,15 +2,16 @@
 Maintainers
 ===========
 
-This part of the documentation is meant for Exegol maintainers.
+This part of the documentation is meant for Exegol maintainers. It adds up to the :doc:`contributors </community/contributors>` documentation.
 
 .. contents::
+    :local:
 
 Wrapper release
 ===============
 
 .. hint::
-    The wrapper documentation must be aligned with the wrapper features. Make sure to add code to the appropriate `Exegol docs <https://github.com/ThePorgs/Exegol-docs>`_ branch and have a pull request ready. The docs PR can be merged once the wrapper is released.
+    The wrapper documentation must be aligned with the wrapper features. . The docs PR can be merged once the wrapper is released.
 
 Preparation
 -----------
@@ -153,8 +154,10 @@ Once the PR is approved and ready for merge, it can be merged
 
 .. code-block:: bash
 
+    git checkout main
     git pull --all
     git checkout dev
+    git pull --all
     git merge --ff-only main
     git push
 
@@ -212,6 +215,10 @@ The Exegol project relies on a continuous integration and continuous deployment 
         .. image:: /assets/gh_pipelines.png
             :align: center
             :alt: Pipelines (GitHub)
+
+    ..  tab:: resources
+
+        The GitHub Actions platform is used on :doc:`the Exegol-resources submodule </the-exegol-project/offline-resources>`. Its workflows are used to automatically update the resources (monthly) and automatically export the list of resources to the documentation.
 
     ..  tab:: docs
 
@@ -426,9 +433,11 @@ In order to avoid that error, the runner was started interactively with ``./run.
 2. Disk space
 _____________
 
-When there's not enough
+When there's not enough disk space, the following error is usually raised by the pipelines.
 
-You are running out of disk space. The runner will stop working when the machine runs out of disk space. Free space left: 62 MB
+.. code-block::
+
+    You are running out of disk space. The runner will stop working when the machine runs out of disk space. Free space left: 62 MB
 
 
 Pull Requests

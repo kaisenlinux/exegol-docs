@@ -13,6 +13,7 @@ Once the wrapper is installed, the second step in setting up Exegol on a device 
 :doc:`here </exegol-wrapper/install>`). Both actions will guide the user in installing an image if needed.
 
 .. contents::
+    :local:
 
 .. _install_requirements:
 
@@ -23,7 +24,7 @@ The following elements are required before Exegol can be installed, whatever the
 
 * git (`Linux <https://github.com/git-guides/install-git#install-git-on-linux>`__ | `macOS <https://github.com/git-guides/install-git#install-git-on-mac>`__ | `Windows <https://github.com/git-guides/install-git#install-git-on-windows>`__)
 * python3 (`Linux <https://docs.python.org/3/using/unix.html#on-linux>`__ | `macOS <https://www.python.org/downloads/macos/>`__ | `Windows <https://www.python.org/downloads/windows/>`__)
-* docker (`Linux <https://docs.docker.com/engine/install/debian/>`__ | `macOS <https://docs.docker.com/desktop/install/mac-install/>`__ | `Windows <https://docs.docker.com/desktop/install/windows-install/>`__)
+* docker (`Linux <https://docs.docker.com/engine/install/debian/>`__) or Docker Desktop (`macOS <https://docs.docker.com/desktop/install/mac-install/>`__ | `Windows <https://docs.docker.com/desktop/install/windows-install/>`__)
 * at least 20GB of free storage
 
 Additional dependencies may be required depending on the host OS.
@@ -57,9 +58,17 @@ Additional dependencies may be required depending on the host OS.
 
            For more information, official Docker documentation shows `how to manage docker as a non root user <https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-userm>`_.
 
+        .. warning::
+
+            `Docker "Rootless mode" <https://docs.docker.com/engine/security/rootless/>`_ is not supported by Exegol as of yet. Please follow the install procedure mentionned above.
+
     ..  tab:: macOS
 
-        To support graphical applications (:ref:`display sharing functionality <feature_display_sharing>`, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:
+        To support graphical applications (:ref:`display sharing functionality <feature_x11_sharing>`, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:
+
+        .. hint::
+
+            The XQuartz requirement below is now optional if using the (beta) :ref:`Graphical Remote Desktop feature <feature_desktop>` instead of X11 sharing (join our Discord to know more about this beta feature).
 
         * `XQuartz <https://www.xquartz.org/>`__ must be installed
         * The XQuartz config ``Allow connections from network clients`` must be set to true
@@ -85,12 +94,26 @@ Additional dependencies may be required depending on the host OS.
 
     ..  group-tab:: Windows
 
-        To support graphical applications (:ref:`display sharing functionality <feature_display_sharing>`, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:
+        To support graphical applications (:ref:`display sharing functionality <feature_x11_sharing>`, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:
 
-        * Windows **11** is needed
-        * Docker must run on **WSL2** engine (`how to <https://learn.microsoft.com/en-us/windows/wsl/install>`_)
-        * `WSLg <https://github.com/microsoft/wslg#installing-wslg>`_ must be installed
-        * at least one WSL distribution must be **installed** as well (e.g. Debian), with **Docker integration** enabled
+        * Windows **10** (up to date), or Windows **11**, is required
+        * **Docker Desktop** installed on the Windows host
+        * Docker Desktop must be configured to run on **WSL2** engine (`how to <https://learn.microsoft.com/en-us/windows/wsl/install>`_)
+        * `WSLg <https://github.com/microsoft/wslg#installing-wslg>`_ must be installed to support graphical application
+        * at least one WSL distribution must be **installed** as well (e.g. Debian), with **Docker integration** enabled (see screenshot below)
+
+
+        .. figure:: /assets/install/windows_dockerdesktop_wsl_config.png
+            :align: center
+            :alt: Windows Docker Desktop WSL integration configuration
+
+            Windows Docker Desktop WSL integration configuration
+
+        In a Windows environment, the Exegol wrapper can be installed **either** in a **WSL shell** or directly in your Windows environment with **Powershell**.
+
+        .. warning::
+
+            Please note that it is **not** advisable to use Exegol from both environments at the same time, as this could lead to conflicts and Exegol does not officially support this configuration.
 
 .. _exegol_install:
 
@@ -114,6 +137,11 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
            python3 -m pip install exegol
 
+        .. warning::
+
+            You may want to disable Windows Defender during the installation, as Exegol will download pre-built remote shells (or temporarily exclude ``C:\Users\<username>\AppData\Local\Temp``).
+
+            You should also add the folder ``C:\Users\<user>\.exegol\exegol-resources`` to the exclution list.
 
     ..  group-tab:: Installing from sources
 
@@ -122,6 +150,14 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
         .. code-block:: bash
 
            git clone "https://github.com/ThePorgs/Exegol"
+
+        .. tip::
+
+            If you want a **light** clone of Exegol (and **never** use the **dev** branch), you can use the following command:
+
+            .. code-block:: bash
+
+                git clone --shallow-since="2023/05/08" "https://github.com/ThePorgs/Exegol"
 
         If you have access to docker directly as a user, you can install the requirements only for your current user
         otherwise the requirements must be installed as root to run Exegol with sudo.
@@ -140,7 +176,20 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
                    python3 -m pip install --user --requirement "Exegol/requirements.txt"
 
+    ..  tab:: Installing with pipx
 
+        Exegol's wrapper can also be installed with pipx either from sources or PyPI, which allows to install Exegol in a virtual environment of its own.
+
+        .. code-block:: bash
+
+            # install pipx if not already installed
+            python3 -m pip install pipx
+
+            # from sources
+            pipx install git+https://github.com/ThePorgs/Exegol
+
+            # packaged from PyPI
+            pipx install exegol
 
 
 
@@ -166,22 +215,27 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
                 .. code-block:: bash
 
-                   sudo ln -s "$(pwd)/exegol.py" "/usr/local/bin/exegol"
+                   sudo ln -s "$(pwd)/Exegol/exegol.py" "/usr/local/bin/exegol"
 
             ..  group-tab:: Windows
 
-                Once this is taken care of, the exegol wrapper can then can be added as a PowerShell command alias and saved for persistence
-                in ``$HOME\PowershellAliasesExport.txt``
-                then loaded from ``$PROFILE`` script at PowerShell startup. Exegol can then be used with ``exegol <action>`` instead of ``python3 /path/to/Exegol/exegol.py <action>``.
+                Once this is taken care of, the exegol wrapper can then can be added as a PowerShell command alias. Exegol can then be used with ``exegol <action>`` instead of ``python3 /path/to/Exegol/exegol.py <action>``.
 
-                To create the alias file correctly, open a powershell and place yourself in the folder where exegol is located (applicable only for `from source` installations) and run the following commands:
+                To create the alias file correctly, open a PowerShell and place yourself in the folder where exegol is located (applicable only for `from source` installations) and run the following commands:
+
+                Create `$PROFILE` file if it doesn't exist:
 
                 .. code-block:: powershell
 
-                   $AliasFile = "$HOME\PowershellAliasesExport.txt"
-                   Set-Alias -Name exegol -Value "$(pwd)\exegol.py"
-                   Get-Alias -Name "exegol" | Export-Alias -Path $AliasFile
-                   echo "Import-Alias '$AliasFile'" >> $PROFILE
+                    if (!(Test-Path -Path $PROFILE)) {
+                        New-Item -ItemType File -Path $PROFILE -Force
+                    }
+                
+                Create alias for Exegol in `$PROFILE`:
+
+                .. code-block:: powershell
+
+                    echo "Set-Alias -Name exegol -Value '$(pwd)\exegol.py'" >> $PROFILE
 
                 .. warning::
 
@@ -201,7 +255,7 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 3. (Optional) Using Exegol auto-completion
 ------------------------------------------
 
-Exegol supports auto-completion in many shell environments but there is a configuration to add for this feature to work.
+Exegol (wrapper) supports auto-completion in many shell environments but there is a configuration to add (on the host) for this feature to work.
 
 .. tip::
 
@@ -283,6 +337,34 @@ Exegol supports auto-completion in many shell environments but there is a config
             .. code-block:: bash
 
                 eval `register-python-argcomplete --no-defaults --shell tcsh exegol`
+
+        .. tab:: PowerShell
+
+            To activate completions for PowerShell, first generate completion file :
+
+            .. code-block:: powershell
+
+                register-python-argcomplete --no-defaults --shell powershell exegol > $HOME\Documents\WindowsPowerShell\exegol_completion.psm1
+
+            .. warning::
+
+                If the command ``register-python-argcomplete`` is not found, that means that python pip script are not in your PATH.
+                You can ty to fix your pip installation: `Linux <https://stackoverflow.com/a/62823029>`__ | `MacOS <https://stackoverflow.com/a/43368894>`__ | `Windows <https://builtin.com/software-engineering-perspectives/pip-command-not-found>`__
+                Or find the direct Python script path, it might be something like:  ``$HOME\AppData\Roaming\Python\Python311\Scripts\register-python-argcomplete`` (``Python311`` PATH depends on the version of Python you have installed, it must be updated to match your local setup).
+            
+            Then import this completion file in `$PROFILE`:
+
+            .. code-block:: powershell
+
+                echo "Import-Module '$HOME\Documents\WindowsPowerShell\exegol_completion.psm1'" >> $PROFILE
+            
+            .. tip::
+                
+                You can have Zsh style completion in PowerShell using this:
+
+                .. code-block:: powershell
+
+                    echo "Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete" >> $PROFILE
 
 4. Installation of the first Exegol image
 -----------------------------------------

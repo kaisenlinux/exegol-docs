@@ -1,3 +1,10 @@
+exegol-docs (4.3.1-1kaisen) kaisen-packages; urgency=medium
+
+  * Bump the version in 4.3.1
+  * Install doc in /usr/share/exegol-docs directory
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>  Tue, 26 Dec 2023 15:05:54 +0100
+
 exegol-docs (4.2.5-1kaisen) kaisen-packages; urgency=medium
 
   * Bump the version in 4.2.5

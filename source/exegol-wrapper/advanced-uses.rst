@@ -3,6 +3,7 @@ Advanced uses
 ===============
 
 .. contents::
+    :local:
 
 .. _exegol_configuration:
 
@@ -36,7 +37,7 @@ Within the ``~/.exegol/config.yml`` file, several settings can be configured to 
         ..  _private_workspace_path:
 
         * ``my_resources_path``: the "my-resources" volume is a storage space dedicated to the user to customize his environment and tools. This volume is, by default, shared across all exegol containers. See :ref:`details about it <My-resources-wrapper>`.
-        * ``exegol_resources_path``: exegol-resources are data and static tools downloaded in addition to docker images. These tools are complementary and are accessible directly from the host. See :doc:`details </exegol-resources/intro>`.
+        * ``exegol_resources_path``: exegol-resources are data and static tools downloaded in addition to docker images. These tools are complementary and are accessible directly from the host. See :doc:`details </exegol-resources/resources>`.
         * ``private_workspace_path``: when containers do not have an explicitly declared workspace at their creation (i.e. with ``--cwd-mount``, or ``--workspace``), a dedicated folder will be created at this location to share the workspace with the host but also to save the data after deleting the container.
 
     ..  tab:: Config
@@ -56,6 +57,14 @@ Within the ``~/.exegol/config.yml`` file, several settings can be configured to 
 
                 * ``logging_method``: Choice of the method used to record the sessions, ``script`` or ``asciinema``. (Default: ``asciinema``)
                 * ``enable_log_compression``: Enable automatic compression of log files (with gzip). (Default: ``True``)
+
+            ..  tab:: Desktop
+
+                Change the configuration of the virtual Desktop feature.
+
+                * ``enabled_by_default``: Enables or not the desktop mode by default. If this attribute is set to True, then using the CLI ``--desktop`` option will be inverted and will **DISABLE** the feature (Default: ``False``)
+                * ``default_protocol``: Default desktop protocol,can be ``http``, or ``vnc`` depending on your wrapper / image version. (Default: ``http``)
+                * ``localhost_by_default``: Desktop service is exposed on localhost by default. If set to true, services will be exposed on ``localhost`` (127.0.0.1) otherwise it will be exposed on ``0.0.0.0``. This setting can be overwritten with :doc:`--desktop-config </exegol-wrapper/start>`. (Default: ``True``)
 
 
 
