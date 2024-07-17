@@ -1,4 +1,5 @@
 Tool,Link,Description
+abuseACL,https://github.com/AetherBlack/abuseACL,A python script to automatically list vulnerable Windows ACEs/ACLs.
 aclpwn,https://github.com/aas-n/aclpwn.py,Tool for testing the security of Active Directory access controls.
 adidnsdump,https://github.com/dirkjanm/adidnsdump,Active Directory Integrated DNS dump utility
 aircrack-ng,https://www.aircrack-ng.org,A suite of tools for wireless penetration testing
@@ -13,6 +14,7 @@ apktool,https://github.com/iBotPeaches/Apktool,It is a tool for reverse engineer
 arjun,https://github.com/s0md3v/Arjun,HTTP parameter discovery suite.
 arsenal,https://github.com/Orange-Cyberdefense/arsenal,Powerful weapons for penetration testing.
 asdf,https://github.com/asdf-vm/asdf,Extendable version manager with support for ruby python go etc
+asrepcatcher,https://github.com/Yaxxine7/ASRepCatcher,Make your VLAN ASREProastable.
 assetfinder,https://github.com/tomnomnom/assetfinder,Tool to find subdomains and IP addresses associated with a domain.
 autoconf,https://www.gnu.org/software/autoconf/autoconf.html,Tool for producing shell scripts to configure source code packages
 autorecon,https://github.com/Tib3rius/AutoRecon,Multi-threaded network reconnaissance tool which performs automated enumeration of services.
@@ -28,6 +30,7 @@ bloodhound-ce.py,https://github.com/fox-it/BloodHound.py,BloodHound-CE ingestor 
 bloodhound-import,https://github.com/fox-it/BloodHound.py,Import data into BloodHound for analyzing active directory trust relationships
 bloodhound-quickwin,https://github.com/kaluche/bloodhound-quickwin,A tool for BloodHounding on Windows machines without .NET or Powershell installed
 bloodhound.py,https://github.com/fox-it/BloodHound.py,BloodHound ingestor in Python.
+bloodyAD,https://github.com/CravateRouge/bloodyAD,bloodyAD is an Active Directory privilege escalation swiss army knife.
 bolt,https://github.com/s0md3v/bolt,Bolt crawls the target website to the specified depth and stores all the HTML forms found in a database for further processing.
 bqm,https://github.com/Acceis/bqm,Tool to deduplicate custom BloudHound queries from different datasets and merge them in one file.
 brakeman,https://github.com/presidentbeef/brakeman,Static analysis tool for Ruby on Rails applications
@@ -52,11 +55,13 @@ cloudsploit,https://github.com/aquasecurity/cloudsploit,Cloud Security Posture M
 clusterd,https://github.com/hatRiot/clusterd,A tool to distribute and remotely manage Hacking Team's RCS agents.
 cmsmap,https://github.com/Dionach/CMSmap,Tool for security audit of web content management systems.
 coercer,https://github.com/p0dalirius/coercer,DFS-R target coercion tool
+conpass,https://github.com/login-securite/conpass,Python tool for continuous password spraying taking into account the password policy.
 constellation,https://github.com/constellation-app/Constellation,Find and exploit vulnerabilities in mobile applications.
 corscanner,https://github.com/chenjj/CORScanner,a Python script for finding CORS misconfigurations.
 cowpatty,https://github.com/joswr1ght/cowpatty,cowpatty is a tool for offline dictionary attacks against WPA-PSK (Pre-Shared Key) networks.
 crackhound,https://github.com/trustedsec/crackhound,A fast WPA/WPA2/WPA3 WiFi Handshake capture / password recovery and analysis tool
 crackmapexec,https://github.com/Porchetta-Industries/CrackMapExec,Network scanner.
+creds,https://github.com/ihebski/DefaultCreds-cheat-sheet,One place for all the default credentials to assist pentesters during an engagement. This document has several products default login/password gathered from multiple sources.
 crunch,https://github.com/crunchsec/crunch,A wordlist generator where you can specify a standard character set or a character set you specify.
 cupp,https://github.com/Mebus/cupp,Cupp is a tool used to generate personalized password lists based on target information.
 CyberChef,https://github.com/gchq/CyberChef/,The Cyber Swiss Army Knife
@@ -72,6 +77,7 @@ dnschef,https://github.com/iphelix/dnschef,Tool for DNS MITM attacks
 dnsenum,https://github.com/fwaeytens/dnsenum,dnsenum is a tool for enumerating DNS information about a domain.
 dnsx,https://github.com/projectdiscovery/dnsx,A tool for DNS reconnaissance that can help identify subdomains and other related domains.
 donpapi,https://github.com/login-securite/DonPAPI,Dumping revelant information on compromised targets without AV detection
+dploot,https://github.com/zblurx/dploot,dploot is Python rewrite of SharpDPAPI written un C#.
 droopescan,https://github.com/droope/droopescan,Scan Drupal websites for vulnerabilities.
 drupwn,https://github.com/immunIT/drupwn,Drupal security scanner.
 eaphammer,https://github.com/s0lst1c3/eaphammer,EAPHammer is a toolkit for performing targeted evil twin attacks against WPA2-Enterprise networks.
@@ -151,8 +157,10 @@ jd-gui,https://github.com/java-decompiler/jd-gui,A standalone Java Decompiler GU
 jdwp,https://github.com/IOActive/jdwp-shellifier,This exploitation script is meant to be used by pentesters against active JDWP service / in order to gain Remote Code Execution.
 john,https://github.com/openwall/john,John the Ripper password cracker.
 joomscan,https://github.com/rezasp/joomscan,A tool to enumerate Joomla-based websites
+jsluice,https://github.com/BishopFox/jsluice,Extract URLs / paths / secrets and other interesting data from JavaScript source code.
 jwt,https://github.com/ticarpi/jwt_tool,a command-line tool for working with JSON Web Tokens (JWTs)
 kadimus,https://github.com/P0cL4bs/Kadimus,a tool for detecting and exploiting file upload vulnerabilities
+katana,https://github.com/projectdiscovery/katana,A next-generation crawling and spidering framework.
 KeePwn,https://github.com/Orange-Cyberdefense/KeePwn,KeePwn is a tool that extracts passwords from KeePass 1.x and 2.x databases.
 kerbrute,https://github.com/ropnop/kerbrute,A tool to perform Kerberos pre-auth bruteforcing
 kiterunner,https://github.com/assetnote/kiterunner,Tool for operating Active Directory environments.
@@ -181,7 +189,7 @@ maigret,https://github.com/soxoj/maigret,Collects information about a target ema
 maltego,https://www.paterva.com/web7/downloads.php,A tool used for open-source intelligence and forensics
 manspider,https://github.com/blacklanternsecurity/MANSPIDER,Manspider will crawl every share on every target system. If provided creds don't work it will fall back to 'guest' then to a null session.
 mariadb-client,https://github.com/MariaDB/server,MariaDB is a community-developed fork of the MySQL relational database management system. The mariadb-client package includes command-line utilities for interacting with a MariaDB server.
-masky,https://github.com/Z4kSec/masky,masky is a tool to mask sensitive data / such as credit card numbers / in logs and other files.
+masky,https://github.com/Z4kSec/Masky,Masky is a python library providing an alternative way to remotely dump domain users' credentials thanks to an ADCS. A command line tool has been built on top of this library in order to easily gather PFX or NT hashes and TGT on a larger scope
 masscan,https://github.com/robertdavidgraham/masscan,Masscan is an Internet-scale port scanner
 mdcat,https://github.com/swsnr/mdcat,Fancy cat for Markdown
 metasploit,https://github.com/rapid7/metasploit-framework,A popular penetration testing framework that includes many exploits and payloads
@@ -233,9 +241,11 @@ phpggc,https://github.com/ambionics/phpggc,Exploit generation tool for the PHP p
 pkcrack,https://github.com/keyunluo/pkcrack,tool to generate wordlists of passwords containing cities at a defined distance around the client city
 pkinittools,https://github.com/dirkjanm/PKINITtools,Pkinit support tools
 polenum,https://github.com/Wh1t3Fox/polenum,Polenum is a Python script which uses the Impacket library to extract user information through the SMB protocol.
+postman,https://www.postman.com/,API platform for testing APIs
 powershell,https://github.com/PowerShell/PowerShell,a command-line shell and scripting language designed for system administration and automation
 pp-finder,https://github.com/yeswehack/pp-finder,Prototype pollution finder tool for javascript. pp-finder lets you find prototype pollution candidates in your code.
 pre2k,https://github.com/garrettfoster13/pre2k,pre2k is a tool to check if a Windows domain has any pre-2000 Windows 2000 logon names still in use.
+pretender,https://github.com/RedTeamPentesting/pretender,an mitm tool for helping with relay attacks.
 prips,https://manpages.ubuntu.com/manpages/focal/man1/prips.1.html,A utility for quickly generating IP ranges or enumerating hosts within a specified range.
 privexchange,https://github.com/dirkjanm/PrivExchange,a tool to perform attacks against Microsoft Exchange server using NTLM relay techniques
 prowler,https://github.com/prowler-cloud/prowler,Perform Cloud Security best practices assessments / audits / incident response / compliance / continuous monitoring / hardening and forensics readiness.
@@ -280,6 +290,8 @@ rusthound (v2),https://github.com/OPENCYBER-FR/RustHound,BloodHound-CE ingestor 
 rusthound,https://github.com/OPENCYBER-FR/RustHound,BloodHound ingestor in Rust.
 rustscan,https://github.com/RustScan/RustScan,The Modern Port Scanner
 samdump2,https://github.com/azan121468/SAMdump2,A tool to dump Windows NT/2k/XP/Vista password hashes from SAM files
+sccmhunter,https://github.com/garrettfoster13/sccmhunter,SCCMHunter is a post-ex tool built to streamline identifying profiling and attacking SCCM related assets in an Active Directory domain.
+sccmwtf,https://github.com/xpn/sccmwtf,This code is designed for exploring SCCM in a lab.
 scout,https://github.com/nccgroup/ScoutSuite,Scout Suite is an open source multi-cloud security-auditing tool which enables security posture assessment of cloud environments.
 scrcpy,https://github.com/Genymobile/scrcpy,Display and control your Android device.
 searchsploit,https://gitlab.com/exploit-database/exploitdb,A command line search tool for Exploit-DB
@@ -296,6 +308,7 @@ sliver,https://github.com/BishopFox/sliver,Open source / cross-platform and exte
 smali,https://github.com/JesusFreke/smali,A tool to disassemble and assemble Android's dex files
 smartbrute,https://github.com/ShutdownRepo/SmartBrute,The smart password spraying and bruteforcing tool for Active Directory Domain Services.
 smbclient,https://github.com/samba-team/samba,SMBclient is a command-line utility that allows you to access Windows shared resources
+smbclient-ng,https://github.com/p0dalirius/smbclient-ng,smbclient-ng is a fast and user friendly way to interact with SMB shares.
 smbmap,https://github.com/ShawnDEvans/smbmap,A tool to enumerate SMB shares and check for null sessions
 smtp-user-enum,https://github.com/pentestmonkey/smtp-user-enum,A tool to enumerate email addresses via SMTP
 smuggler,https://github.com/defparam/smuggler,Smuggler is a tool that helps pentesters and red teamers to smuggle data into and out of the network even when there are multiple layers of security in place.
@@ -303,7 +316,7 @@ SoapUI,https://github.com/SmartBear/soapui,SoapUI is the world's leading testing
 spiderfoot,https://github.com/smicallef/spiderfoot,A reconnaissance tool that automatically queries over 100 public data sources
 sprayhound,https://github.com/Hackndo/Sprayhound,Active Directory password audit tool.
 sqlmap,https://github.com/sqlmapproject/sqlmap,Sqlmap is an open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws
-ssh-audit,https://github.com/arthepsy/ssh-audit,ssh-audit is a tool to test SSH server configuration for best practices.
+ssh-audit,https://github.com/jtesta/ssh-audit,ssh-audit is a tool to test SSH server configuration for best practices.
 sshuttle,https://github.com/sshuttle/sshuttle,Transparent proxy server that tunnels traffic through an SSH server
 sslscan,https://github.com/rbsec/sslscan,a tool for testing SSL/TLS encryption on servers
 ssrfmap,https://github.com/swisskyrepo/SSRFmap,a tool for testing SSRF vulnerabilities.
@@ -336,6 +349,7 @@ trilium,https://github.com/zadam/trilium,Personal knowledge management system.
 tshark,https://github.com/wireshark/wireshark,TShark is a terminal version of Wireshark.
 uberfile,https://github.com/ShutdownRepo/Uberfile,Uberfile is a simple command-line tool aimed to help pentesters quickly generate file downloader one-liners in multiple contexts (wget / curl / powershell / certutil...). This project code is based on my other similar project for one-liner reverseshell generation Shellerator.
 updog,https://github.com/sc0tfree/updog,Simple replacement for Python's SimpleHTTPServer.
+uploader,https://github.com/Frozenka/uploader,Tool for quickly downloading files to a remote machine based on the target operating system
 upx,https://github.com/upx/upx,UPX is an advanced executable packer
 username-anarchy,https://github.com/urbanadventurer/username-anarchy,Tools for generating usernames when penetration testing. Usernames are half the password brute force problem.
 Villain,https://github.com/t3l3machus/Villain,Command & Control Framework

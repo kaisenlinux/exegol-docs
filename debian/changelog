@@ -1,3 +1,10 @@
+exegol-docs (4.3.4-1kaisen+git20240717) kaisen-packages; urgency=medium
+
+  * Bump the version in 4.3.4
+  * Update the package tag to add the git clone date
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>  Wed, 17 Jul 2024 23:41:13 +0200
+
 exegol-docs (4.3.1-1kaisen) kaisen-packages; urgency=medium
 
   * Bump the version in 4.3.1

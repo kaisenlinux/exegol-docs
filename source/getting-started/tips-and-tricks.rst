@@ -35,7 +35,8 @@ Share files or notes with targets and collaborators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following tools or commands can be used to pop a temporary file or http server: ``updog``, ``goshs``, ``http-server``, ``http-put-server``, ``ftp-server``, ``smbserver.py``.
-In order to shares notes during an engagement, ``trilium`` (https://github.com/zadam/trilium) can be used.
+
+In order to **shares notes** during an engagement, ``trilium`` (https://github.com/zadam/trilium) can be used.
 
 Dynamic history commands
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,7 +49,7 @@ This allows users to easily look for, and use, commands in the history, without 
 The best reverse shells
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``shellerator`` can be used to generate a reverse shell command dynmically
+* ``shellerator`` can be used to generate a reverse shell command dynamically
 * on the attacker's side, a reverse shell obtained through a ``netcat`` tunnel can be improved (see `ropnop.com <https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/>`_ or `0xffsec.com <https://0xffsec.com/handbook/shells/full-tty/>`_)
 * simple alternative way to have an upgrade netcat reverse shell: use ``rlwrap <netcat listener command>``
 * instead of using ``netcat`` and "upgrade" the shell manually, ``pwncat-cs`` (`calebstewart/pwncat <https://github.com/calebstewart/pwncat>`_) can be used to obtain an even better reverse shell experience (especially with UNIX-like targets).
@@ -66,3 +67,67 @@ Keyboard shortcuts
 * ``ctrl + l``: clear the screen
 
 
+Useful aliases
+~~~~~~~~~~~~~~
+
+
+.. tip::
+
+    To see every alias in your exegol image, run the command:
+
+    .. code-block::
+
+        alias
+
+.. tip::
+
+    You can see the complete command configured for an alias with the command:
+
+    .. code-block::
+
+        alias <alias_name>
+
+.. warning::
+
+    Some aliases are not available before image ``3.1.5``.
+
+Here's a list of useful aliases designed to save you time:
+
+Network related
+---------------
+
+* ``ipa``: List network interfaces in short and colorful way
+* ``ipr``: List network routes in short and colorful way
+* ``pc``: Shortcut to ``proxychains``
+* ``ncvz``: Shortcut to test an open TCP port
+
+Shell
+-----
+
+* ``ws``: Shortcut to ``cd /workspace``
+* ``_``: Shortcut to ``sudo``
+* ``xcopy``: Copy a file to clipboard
+* ``xpaste``: Create a file from clipboard
+* ``xshow``: Print clipboard
+* ``sed-empty-line``: Removes empty lines
+* ``sed-comment-line``: Removes commented lines
+* ``history-dump``: Export full history of commands with **date and time** of execution
+
+
+Quick service
+-------------
+
+* ``http-put-server``: Python web server ``put`` capable
+* ``http-server``: Shortcut to classic Python web server
+* ``php-server``: Server a PHP webserver on current directory using port 8080
+
+
+Tools optimization
+------------------
+
+* ``hcat``: Automatic hashcat format solver with fuzzy finder wordlist
+* ``hjohn``: Automatic john the ripper format solver with fuzzy finder wordlist
+* ``scan-range``: Nmap shortcut to find host in a specified network range
+* ``nse``: Find nmap NSE script
+* ``urlencode``: Encodes arguments in URL format
+* ``urldecode``: Decodes arguments from URL format

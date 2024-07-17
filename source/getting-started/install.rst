@@ -25,13 +25,13 @@ The following elements are required before Exegol can be installed, whatever the
 * git (`Linux <https://github.com/git-guides/install-git#install-git-on-linux>`__ | `macOS <https://github.com/git-guides/install-git#install-git-on-mac>`__ | `Windows <https://github.com/git-guides/install-git#install-git-on-windows>`__)
 * python3 (`Linux <https://docs.python.org/3/using/unix.html#on-linux>`__ | `macOS <https://www.python.org/downloads/macos/>`__ | `Windows <https://www.python.org/downloads/windows/>`__)
 * docker (`Linux <https://docs.docker.com/engine/install/debian/>`__) or Docker Desktop (`macOS <https://docs.docker.com/desktop/install/mac-install/>`__ | `Windows <https://docs.docker.com/desktop/install/windows-install/>`__)
-* at least 20GB of free storage
+* at least 100GB of free storage recommended (a minimum of 20GB could be enough, but only for the ``light`` image).
 
 Additional dependencies may be required depending on the host OS.
 
 ..  tabs::
 
-    ..  tab:: Linux
+    ..  group-tab:: Linux
 
         No additional dependencies for Linux environments.
 
@@ -41,8 +41,7 @@ Additional dependencies may be required depending on the host OS.
 
            .. code-block:: bash
 
-              curl -fsSL "https://get.docker.com/" -o get-docker.sh
-              sh get-docker.sh
+              curl -fsSL "https://get.docker.com/" | sh
 
         .. warning::
 
@@ -62,7 +61,7 @@ Additional dependencies may be required depending on the host OS.
 
             `Docker "Rootless mode" <https://docs.docker.com/engine/security/rootless/>`_ is not supported by Exegol as of yet. Please follow the install procedure mentionned above.
 
-    ..  tab:: macOS
+    ..  group-tab:: macOS
 
         To support graphical applications (:ref:`display sharing functionality <feature_x11_sharing>`, e.g. Bloodhound, Wireshark, Burp, etc.), additional dependencies and configuration are required:
 
@@ -86,9 +85,19 @@ Additional dependencies may be required depending on the host OS.
 
             macOS Docker Desktop resources requirement
 
+        .. warning::
+
+            You'll also need to add the exegol source folder (or, more precisely, the folder ``[...]/exegol/utils/imgsync``).
+
+            If you install Exegol from the python pip package, this folder is located where the python packages are installed.
+            The path to this folder depends on how you installed python. When creating your first container, you may get an error disclosing the exegol installation folder, which will have to be added as an authorized resource.
+
+
         .. tip::
 
             `OrbStack <https://orbstack.dev/>`__ for **Mac** is supported by Exegol wrapper from ``v4.2.0``.
+
+            Your exegol installation cannot be stored under ``/opt`` directory when using OrbStack (`due to OrbStack limitations <https://github.com/orbstack/orbstack/issues/435>`_).
 
             This support is still in beta, feel free to open issues on `GitHub <https://github.com/ThePorgs/Exegol/issues/new/choose>`__ if you encounter any bugs.
 
@@ -115,6 +124,13 @@ Additional dependencies may be required depending on the host OS.
 
             Please note that it is **not** advisable to use Exegol from both environments at the same time, as this could lead to conflicts and Exegol does not officially support this configuration.
 
+        .. warning::
+
+            You may want to disable Windows Defender during the installation, as Exegol will download pre-built remote shells (or temporarily exclude ``C:\Users\<username>\AppData\Local\Temp`` or the source file directory).
+
+            You should also add the folder ``C:\Users\<user>\.exegol\exegol-resources`` to the exclusion list.
+
+
 .. _exegol_install:
 
 Installation
@@ -127,11 +143,66 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 -------------------------
 
 ..  tabs::
+    ..  group-tab:: Installing with pipx (preferred)
+
+        The pre-compiled Exegol’s wrapper can be installed from the PyPI repository.
+        While this is the easiest and most user-friendly technique, it is advised to install from sources, as it allows to switch from release to dev branches easily and it supports the auto-update feature.
+
+        Using ``pipx`` allows you to install Exegol in an **isolated** virtual environment **dedicated** to it.
+
+        First, ``pipx`` must be installed on your host system:
+
+        .. code-block:: bash
+
+            # install pipx if not already installed, from system package:
+            sudo apt update && sudo apt install pipx
+            # OR from pip
+            python3 -m pip install pipx
+
+        Exegol's wrapper can be installed with ``pipx`` from **PyPI**:
+
+        .. code-block:: bash
+
+            # You can now install Exegol package from PyPI
+            pipx install exegol
+
+    ..  group-tab:: Installing from sources
+
+        Exegol's wrapper can be installed from sources (with Git). The wrapper then knows how to self-update, and switching from release and development branches is possible and very easy.
+
+        .. code-block:: bash
+
+            git clone "https://github.com/ThePorgs/Exegol"
+
+        .. tip::
+
+           If you want a **light** clone of Exegol (and **never** use the **dev** branch), you can use the following command:
+
+           .. code-block:: bash
+
+               git clone --shallow-since="2023/05/08" "https://github.com/ThePorgs/Exegol"
+
+        If you have access to docker directly as a user, you can install the requirements only for your current user
+        otherwise the requirements must be installed as root to run Exegol with sudo.
+
+        .. tabs::
+
+           .. tab:: With sudo
+
+               .. code-block:: bash
+
+                  sudo python3 -m pip install --requirement "Exegol/requirements.txt"
+
+           .. tab:: Directly as user
+
+               .. code-block:: bash
+
+                  python3 -m pip install --user --requirement "Exegol/requirements.txt"
 
     ..  group-tab:: Installing with pip
 
-        Exegol's wrapper can be installed from pip.
-        While this is the easiest and most user-friendly technique, for more advanced users it is advised to install from sources, as it allows to switch from release to dev branches easily and the auto-update feature is supported.
+        The pre-compiled Exegol’s wrapper can be installed from the PyPI repository.
+        While this is the easiest and most user-friendly technique, it is advised to install from sources, as it allows to switch from release to dev branches easily and it supports the auto-update feature.
 
         .. code-block:: bash
 
@@ -139,58 +210,7 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
         .. warning::
 
-            You may want to disable Windows Defender during the installation, as Exegol will download pre-built remote shells (or temporarily exclude ``C:\Users\<username>\AppData\Local\Temp``).
-
-            You should also add the folder ``C:\Users\<user>\.exegol\exegol-resources`` to the exclution list.
-
-    ..  group-tab:: Installing from sources
-
-        Exegol's wrapper can also be installed from sources (with Git). The wrapper then knows how to self-update, and switching from release and development branches is possible and very easy.
-
-        .. code-block:: bash
-
-           git clone "https://github.com/ThePorgs/Exegol"
-
-        .. tip::
-
-            If you want a **light** clone of Exegol (and **never** use the **dev** branch), you can use the following command:
-
-            .. code-block:: bash
-
-                git clone --shallow-since="2023/05/08" "https://github.com/ThePorgs/Exegol"
-
-        If you have access to docker directly as a user, you can install the requirements only for your current user
-        otherwise the requirements must be installed as root to run Exegol with sudo.
-
-        .. tabs::
-
-            .. tab:: With sudo
-
-                .. code-block:: bash
-
-                   sudo python3 -m pip install --requirement "Exegol/requirements.txt"
-
-            .. tab:: Directly as user
-
-                .. code-block:: bash
-
-                   python3 -m pip install --user --requirement "Exegol/requirements.txt"
-
-    ..  tab:: Installing with pipx
-
-        Exegol's wrapper can also be installed with pipx either from sources or PyPI, which allows to install Exegol in a virtual environment of its own.
-
-        .. code-block:: bash
-
-            # install pipx if not already installed
-            python3 -m pip install pipx
-
-            # from sources
-            pipx install git+https://github.com/ThePorgs/Exegol
-
-            # packaged from PyPI
-            pipx install exegol
-
+            In some cases, it is no longer possible to add a pip package system-wide (PEP 668). In such cases, it is preferable to use ``pipx``.
 
 
 2. Adding Exegol to the ``PATH``
@@ -198,13 +218,15 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
 ..  tabs::
 
-    ..  group-tab:: Installing with pip
+    ..  group-tab:: Installing with pipx (preferred)
 
-        If your pip installation is correct and functional, you have nothing more to do and you can already use the command ``exegol``.
+        In order to use pipx applications, the pipx environment must be set in your PATH:
 
-        If not, remember that pip installs binaries in a **dedicated** local folder, which then **must** be in the ``PATH`` environment variable.
-        Try to fix your pip installation: `Linux <https://stackoverflow.com/a/62823029>`__ | `MacOS <https://stackoverflow.com/a/43368894>`__ | `Windows <https://builtin.com/software-engineering-perspectives/pip-command-not-found>`__
+        .. code-block:: bash
 
+            pipx ensurepath
+
+        Dont forget to open a **new terminal** to reload your PATH before continuing.
 
     ..  group-tab:: Installing from sources
 
@@ -230,7 +252,7 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
                     if (!(Test-Path -Path $PROFILE)) {
                         New-Item -ItemType File -Path $PROFILE -Force
                     }
-                
+
                 Create alias for Exegol in `$PROFILE`:
 
                 .. code-block:: powershell
@@ -252,22 +274,112 @@ The installation of Exegol on Linux, macOS and Windows are very similar. It can 
 
                     It is possible to disable this behavior in the Windows settings: ``Apps > Apps & features > App execution aliases`` and disable aliases for ``python.exe`` and ``python3.exe``.
 
-3. (Optional) Using Exegol auto-completion
+    ..  group-tab:: Installing with pip
+
+        If your pip installation is correct and functional, you have nothing more to do and you can already use the command ``exegol``.
+
+        If not, remember that pip installs binaries in a **dedicated** local folder, which then **must** be in the ``PATH`` environment variable.
+        Try to fix your pip installation: `Linux <https://stackoverflow.com/a/62823029>`__ | `MacOS <https://stackoverflow.com/a/43368894>`__ | `Windows <https://builtin.com/software-engineering-perspectives/pip-command-not-found>`__
+
+
+3. Run Exegol with appropriate privileges
+-----------------------------------------
+
+
+..  tabs::
+
+    ..  group-tab:: Linux
+
+        Exegol does not support rootless docker. To interact with docker, you must either have your user be a member of the docker group to use exegol as a user, or run Exegol with root privileges using sudo.
+
+        ..  tabs::
+
+            .. tab:: Run as root (preferred)
+
+                To run Exegol as root with sudo, you must use a specific sudo command. For a better user experience, we recommend using an alias:
+
+                ..  tabs::
+
+                    .. group-tab:: Bash
+
+                        .. code-block:: bash
+
+                            echo "alias exegol='sudo -E $(which exegol)'" >> ~/.bash_aliases
+                            source ~/.bashrc
+
+                    .. group-tab:: Zsh
+
+                        .. code-block:: bash
+
+                            echo "alias exegol='sudo -E $(which exegol)'" >> ~/.zshrc
+                            source ~/.zshrc
+
+            .. tab:: Run as user
+
+                .. warning::
+
+                    By giving the user direct access to docker, this allows the user to compromise the host and become **root** on the machine with full access to the file system.
+
+                    For more information, official Docker documentation shows `how to manage docker as a non root user <https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-userm>`_.
+
+                If you accept this risk because the environment is not critical and you prefer ease of use without the security control provided by sudo, you can apply the following method to use exegol directly as a user:
+
+               .. code-block:: bash
+
+                    # add the sudo group to the user
+                    sudo usermod -aG docker $(id -u -n)
+
+                    # To apply the new group you must open a new shell
+                    exit
+                    # OR "reload" the user groups with the newly added docker group
+                    newgrp docker
+
+    ..  group-tab:: macOS
+
+        Exegol should **NOT** be used as root on macOS. Docker Desktop (or Orbstack) do not require root privileges.
+
+    ..  group-tab:: Windows
+
+        Exegol should **NOT** be used as admin on Windows. Docker Desktop doesn't require administrator privileges.
+
+
+4. Installation of the first Exegol image
+-----------------------------------------
+
+Once the exegol wrapper is installed, you can download your first docker image with the following command:
+
+.. code-block:: bash
+
+   exegol install
+
+
+5. (Optional) Using Exegol auto-completion
 ------------------------------------------
 
 Exegol (wrapper) supports auto-completion in many shell environments but there is a configuration to add (on the host) for this feature to work.
-
-.. tip::
-
-    If you have a source installation, make sure you have installed (or updated) the ``requirements.txt`` packages before using the completer.
 
 .. important::
 
     The following configurations must be made in your **host** environment.
 
+.. tip::
+
+    If the command ``register-python-argcomplete`` is not found on your host, you have to install it:
+
+    .. code-block:: bash
+
+        # Using the system package manager
+        sudo apt install python3-argcomplete
+
+        # Or using pip (check if pip packages are included in your $PATH)
+        pip3 install --user argcomplete
+
+        # Or using pipx (check if pipx packages are included in your $PATH)
+        pipx install argcomplete
+
 ..  tabs::
     ..  tabs::
-        .. tab:: Bash
+        .. group-tab:: Bash
 
             You can enable Exegol auto-completion for your **current user** with your ``.bashrc`` or you can enable the auto-completion **system-wide** with ``bash-completion``.
 
@@ -301,7 +413,7 @@ Exegol (wrapper) supports auto-completion in many shell environments but there i
             .. tip::
                 If you have multiple tools using ``argcomplete`` you can also use the `global completion <https://kislyuk.github.io/argcomplete/#global-completion>`__ method (need bash >= 4.2).
 
-        .. tab:: Zsh
+        .. group-tab:: Zsh
 
             To activate completions for zsh you need to have ``bashcompinit`` enabled in zsh:
 
@@ -316,7 +428,7 @@ Exegol (wrapper) supports auto-completion in many shell environments but there i
 
                 eval "$(register-python-argcomplete --no-defaults exegol)"
 
-        .. tab:: Fish
+        .. group-tab:: Fish
 
             To activate completions for fish use:
 
@@ -330,7 +442,7 @@ Exegol (wrapper) supports auto-completion in many shell environments but there i
 
                 register-python-argcomplete --no-defaults --shell fish exegol > ~/.config/fish/completions/exegol.fish
 
-        .. tab:: Tcsh
+        .. group-tab:: Tcsh
 
             To activate completions for tcsh use:
 
@@ -365,13 +477,3 @@ Exegol (wrapper) supports auto-completion in many shell environments but there i
                 .. code-block:: powershell
 
                     echo "Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete" >> $PROFILE
-
-4. Installation of the first Exegol image
------------------------------------------
-
-Once the exegol wrapper is installed, you can download your first docker image with the following command:
-
-.. code-block:: bash
-
-   exegol install
-
