@@ -1,3 +1,9 @@
+exegol-docs (4.3.5-1kaisen) kaisen-packages; urgency=medium
+
+  * Bump the version in 4.3.5
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>  Mon, 26 Aug 2024 22:41:30 +0200
+
 exegol-docs (4.3.4-1kaisen+git20240717) kaisen-packages; urgency=medium
 
   * Bump the version in 4.3.4
